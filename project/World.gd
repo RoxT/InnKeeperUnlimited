@@ -32,11 +32,13 @@ func pass_time():
 	#Random int of ale drank most likely the number of patrons, min 0
 	var ale_drank = max(0, round (rng.randfn(patrons, 3)))
 	ale -= ale_drank
+	coins += ale_drank
 	$today/Ale.text = "Ale drank: " + str(ale_drank)
 	adjust_children(ale_drank, $today/Ale/Pos, coin)
 	#Random int of potions bought most likely half number of patrons, min 0
 	var potions_bought = max(0, round (rng.randfn(round(patrons/2.0), 3)))
 	potions -= potions_bought
+	coins += potions_bought
 	$today/Potions.text = "Potions bought: " + str(potions_bought)
 	adjust_children(potions_bought, $today/Potions/Pos, coin)
 	#Random int of slimes returned most likely a third of the number of patrons, min 0
