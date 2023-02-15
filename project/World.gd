@@ -87,3 +87,4 @@ func _on_potion_pressed():
 
 func _on_rest_pressed():
 	pass_time()
+
