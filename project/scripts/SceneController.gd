@@ -1,8 +1,8 @@
 extends Node
 
 onready var DialogScene = preload("res://DialogScene.tscn")
-onready var main = $World
-var dialog: Node
+onready var main := $World
+onready var dialog:Node = DialogScene.instance()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,5 +22,4 @@ func _on_DialogBtn_pressed() -> void:
 	
 func on_dialog_finished():
 	remove_child(dialog)
-	dialog = null
 	add_child(main)

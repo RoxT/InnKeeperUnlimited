@@ -14,6 +14,10 @@ config/name="InnKeeperUnlimited"
 run/main_scene="res://World.tscn"
 config/icon="res://textures/ale.png"
 
+[autoload]
+
+S="*res://scripts/Stats.gd"
+
 [display]
 
 window/size/width=480
