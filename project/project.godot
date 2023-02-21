@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="InnKeeperUnlimited"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Inn.tscn"
 config/icon="res://textures/ale.png"
 
 [autoload]

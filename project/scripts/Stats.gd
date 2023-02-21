@@ -5,8 +5,15 @@ var current_event := 0
 
 enum events {
 	OPENING,
-	REST
+	REST,
+	REWARDS,
+	POTIONS
 }
+
+var has_rest := false
+var has_ale := false
+var has_slimes := false
+var has_potions := false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,3 +24,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
+
+func update_visible():
+	match current_event-1:
+		0: has_ale = true
+		1: has_rest = true
+		2: has_slimes = true
+		3: has_potions = true
+		var x: print("unknown event number: " + str(x))
