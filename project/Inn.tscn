@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/SceneController.gd" type="Script" id=1]
 [ext_resource path="res://Inn.gd" type="Script" id=2]
@@ -8,6 +8,16 @@
 [ext_resource path="res://textures/coin.png" type="Texture" id=6]
 [ext_resource path="res://textures/sun.png" type="Texture" id=7]
 [ext_resource path="res://textures/ale.png" type="Texture" id=8]
+[ext_resource path="res://textures/button_anim2.png" type="Texture" id=9]
+[ext_resource path="res://textures/button_anim1.png" type="Texture" id=10]
+
+[sub_resource type="AnimatedTexture" id=1]
+flags = 4
+frames = 2
+fps = 2.0
+frame_0/texture = ExtResource( 10 )
+frame_1/texture = ExtResource( 9 )
+frame_1/delay_sec = 0.0
 
 [node name="SceneController" type="Node"]
 script = ExtResource( 1 )
@@ -100,7 +110,7 @@ margin_left = 229.0
 margin_top = 37.0
 margin_right = 269.0
 margin_bottom = 51.0
-text = "HP: 3"
+text = "HP: 0"
 
 [node name="today" type="CanvasLayer" parent="Inn"]
 
@@ -155,12 +165,14 @@ margin_right = 264.0
 margin_bottom = 422.0
 text = "Today"
 
-[node name="DialogBtn" type="Button" parent="Inn"]
-margin_left = 75.0
-margin_top = 159.0
-margin_right = 117.0
-margin_bottom = 179.0
-text = "Next"
+[node name="DialogBtn" type="TextureButton" parent="Inn"]
+margin_left = 61.0
+margin_top = 151.0
+margin_right = 120.0
+margin_bottom = 181.0
+texture_normal = SubResource( 1 )
+expand = true
+stretch_mode = 4
 
 [connection signal="pressed" from="Inn/buttons/ale" to="Inn" method="_on_ale_pressed"]
 [connection signal="pressed" from="Inn/buttons/potion" to="Inn" method="_on_potion_pressed"]

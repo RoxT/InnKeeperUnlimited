@@ -7,7 +7,8 @@ enum events {
 	OPENING,
 	REST,
 	REWARDS,
-	POTIONS
+	POTIONS,
+	END
 }
 
 var has_rest := false

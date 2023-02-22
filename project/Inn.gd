@@ -1,10 +1,10 @@
 extends Node2D
 
-var coins := 10
+var coins:int = 10
 var ale := 10
 var slimes := 0
 var potions = 0
-var hp := 3
+var hp := 0
 var max_hp := 3
 
 var patrons := 3
@@ -29,6 +29,7 @@ func _enter_tree():
 	$stock/ale.visible = S.has_ale
 	$today/Ale.visible = S.has_ale
 	$buttons/rest.visible = S.has_rest
+	$stock/hp.visible = S.has_rest
 	$stock/slimes.visible = S.has_slimes
 	$today/Slimes.visible = S.has_slimes
 	$buttons/potion.visible = S.has_potions
@@ -45,43 +46,51 @@ func pass_time():
 	var ale_drank = 0
 	var potions_bought = 0
 	var slimes_brought = 0
-	#Random int of ale drank most likely the number of patrons, min 0
 	if S.has_ale:
-		ale_drank = max(0, round (rng.randfn(patrons, 3)))
+		#Random int of ale drank most likely the number of patrons, min 0
+		ale_drank = clamp(round (rng.randfn(patrons, 3)), 0, ale)
 		ale -= ale_drank
 		coins += ale_drank
 		$today/Ale.text = "Ale drank: " + str(ale_drank)
 		adjust_children(ale_drank, $today/Ale/Pos, coin)
 		total_ale += ale_drank
 		$stock/ale.text = "Ale: " + str(ale)
+		if !S.has_rest && ale > 30:
+			$DialogBtn.visible = true
+		elif !S.has_slimes && ale > 50:
+			$DialogBtn.visible = true
 	
-	if S.has_slimes:
-		#Random int of slimes returned most likely a third of the number of patrons, min 0
-		slimes_brought = max(0, round (rng.randfn(round(patrons/3.0), 3)))
-		coins -= slimes_brought*2
-		slimes += slimes_brought
-		$today/Slimes.text = "Slimes returned: " + str(slimes_brought)
-		
-		adjust_children(slimes_brought, $today/Slimes/Pos_Coins, coin_minus)
-		adjust_children(slimes_brought, $today/Slimes/Pos_Slimes, slime)
-		total_slimes += slimes_brought
-		$stock/slimes.text = "Slimes: " + str(slimes)
-		
 	if S.has_potions:
 		#Random int of potions bought most likely half number of patrons, min 0
-		potions_bought = max(0, round (rng.randfn(round(patrons/2.0), 3)))
+		potions_bought = clamp(round (rng.randfn(round(patrons/2.0), 3)), 0, potions)
 		potions -= potions_bought
 		coins += potions_bought
 		$today/Potions.text = "Potions bought: " + str(potions_bought)
 		adjust_children(potions_bought, $today/Potions/Pos, coin)
 		total_potions += potions_bought
 		$stock/potions.text = "Potions: " + str(potions)
-	
+		if potions > 30:
+			$DialogBtn.visible = true
+
+	if S.has_slimes:
+		#Random int of slimes returned most likely a third of the number of patrons, min 0
+		slimes_brought = clamp(round (rng.randfn(round(patrons/3.0), 3)), 0, coins/2)
+		coins -= slimes_brought*2
+		slimes += slimes_brought
+		$today/Slimes.text = "Slimes returned: " + str(slimes_brought)
+		adjust_children(slimes_brought*2, $today/Slimes/Pos_Coins, coin_minus)
+		adjust_children(slimes_brought, $today/Slimes/Pos_Slimes, slime)
+		total_slimes += slimes_brought
+		$stock/slimes.text = "Slimes: " + str(slimes)
+		if !S.has_potions && slimes > 70:
+			$DialogBtn.visible = true
 	
 	if S.has_rest:
 		hp -= 1
 		$stock/hp.text = "HP: " + str(hp)
 		
+	$buttons/ale.disabled = coins <= 1 || (S.has_rest && hp <= 0)
+	$buttons/potion.disabled = coins <= 0 || slimes <= 1 || hp <= 0
 	$stock/coins.text = "Coins: " + str(coins)
 	
 	print("average ale: " + str(round(total_ale/turns)) + " potions: " + str(round(total_potions/turns)) + " slimes: " + str(round(total_slimes/turns)))
@@ -113,7 +122,9 @@ func _on_potion_pressed():
 
 
 func _on_rest_pressed():
-	hp = max_hp + 1
-	if hp == max_hp: hp += 1
+	if hp >= max_hp: 
+		hp =max_hp + 2 
+	else: 
+		hp = max_hp + 1
 	pass_time()
 
