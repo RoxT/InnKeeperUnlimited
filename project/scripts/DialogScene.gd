@@ -21,8 +21,8 @@ var events := {
 var page := 0
 onready var current:int = S.current_event
 
-onready var default:RichTextLabel = $RichTextLabelDefault
-onready var tiny:RichTextLabel = $RichTextLabelTiny
+onready var default:RichTextLabel = $MarginContainer/VBoxContainer/RichTextLabelDefault
+onready var tiny:RichTextLabel = $MarginContainer/VBoxContainer/RichTextLabelTiny
 onready var labels = [default, tiny]
 
 signal dialog_finished
