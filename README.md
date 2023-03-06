@@ -1,2 +1,2 @@
 # InnKeeperUnlimited
-Play as an inn keeper guild
+Play as an inn keeper guild. Brew ale, post rewards for adventures, brew ale, discover new areas for adventurers to adventure, brew ale, buy and sell adventurers' loot, bre....
