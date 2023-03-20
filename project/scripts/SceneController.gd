@@ -1,17 +1,26 @@
 extends Node
 
-onready var DialogScene = preload("res://DialogScene.tscn")
 onready var inn := $Inn
-onready var dialog:Node = DialogScene.instance()
+onready var dialog:Node =  preload("res://DialogScene.tscn").instance()
+onready var skills: = preload("res://Skills.tscn").instance()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	dialog.connect("dialog_finished", self, "on_dialog_finished")
+	skills.connect("back_to_inn", self, "_on_back_to_inn")
+	inn.connect("made_ale", self, "_on_made_ale")
 
+func _on_made_ale():
+	skills.ale_making._skill_up()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func _on_back_to_inn():
+	remove_child(skills)
+	inn.ale_batch = skills.ale_making.level + 10
+	add_child(inn)
+
+func _on_SkillsBtn_pressed():
+	remove_child(inn)
+	add_child(skills)
 	
 func on_dialog_finished():
 	remove_child(dialog)
@@ -24,6 +33,8 @@ func _on_DialogBtn_pressed() -> void:
 		inn.get_node("buttons/ale").disabled = true
 	inn.get_node("DialogBtn").visible = false
 	remove_child(inn)
-	dialog = DialogScene.instance()
 	add_child(dialog)
-	dialog.connect("dialog_finished", self, "on_dialog_finished")
+	dialog.request_ready()
+	
+
+	

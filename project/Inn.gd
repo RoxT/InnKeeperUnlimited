@@ -1,7 +1,7 @@
 extends Node2D
 
 var coins:int = 10
-var ale := 10
+var ale := 0
 var slimes := 0
 var potions = 0
 var hp := 0
@@ -14,10 +14,15 @@ var rng = RandomNumberGenerator.new()
 var coin:Texture = load("res://textures/coin.png")
 var coin_minus:Texture = load("res://textures/coin_minus.png")
 var slime:Texture = load("res://textures/slime.png")
+onready var made_today := $today/MadeToday
 
 var total_ale := 0.0
 var total_slimes := 0.0
 var total_potions := 0.0
+
+var ale_batch := 10
+
+signal made_ale
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -110,7 +115,9 @@ func adjust_children(amt:int, node: Position2D, tex:Texture):
 
 func _on_ale_pressed():
 	coins -= 2
-	ale += 10
+	ale += ale_batch
+	emit_signal("made_ale")
+	made_today.text = "Made " + str(ale_batch) + " ales"
 	pass_time()
 
 
@@ -118,6 +125,7 @@ func _on_potion_pressed():
 	coins -= 1
 	slimes -= 2
 	potions += 10
+	made_today.text = "Made 10 potions"
 	pass_time()
 
 
@@ -126,5 +134,6 @@ func _on_rest_pressed():
 		hp =max_hp + 2 
 	else: 
 		hp = max_hp + 1
+	made_today.text = "Rested"
 	pass_time()
 

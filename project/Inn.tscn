@@ -75,6 +75,17 @@ margin_bottom = 374.0
 text = "Rest"
 icon = ExtResource( 7 )
 
+[node name="SkillsBtn" type="Button" parent="Inn/buttons"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -109.0
+margin_top = -40.0
+margin_right = -10.0
+margin_bottom = -10.0
+text = "Skills ->"
+
 [node name="stock" type="CanvasLayer" parent="Inn"]
 
 [node name="coins" type="Label" parent="Inn/stock"]
@@ -120,16 +131,16 @@ width = 3.0
 
 [node name="Patrons" type="Label" parent="Inn/today"]
 margin_left = 12.0
-margin_top = 440.0
+margin_top = 464.0
 margin_right = 80.0
-margin_bottom = 454.0
+margin_bottom = 478.0
 text = "Patrons : 3"
 
 [node name="Ale" type="Label" parent="Inn/today"]
 margin_left = 12.0
-margin_top = 464.0
+margin_top = 488.0
 margin_right = 88.0
-margin_bottom = 478.0
+margin_bottom = 502.0
 text = "Ale drank: 0"
 
 [node name="Pos" type="Position2D" parent="Inn/today/Ale"]
@@ -137,9 +148,9 @@ position = Vector2( 453, 8 )
 
 [node name="Potions" type="Label" parent="Inn/today"]
 margin_left = 10.0
-margin_top = 488.0
+margin_top = 512.0
 margin_right = 122.0
-margin_bottom = 502.0
+margin_bottom = 526.0
 text = "Potions bought: 0"
 
 [node name="Pos" type="Position2D" parent="Inn/today/Potions"]
@@ -147,9 +158,9 @@ position = Vector2( 455, 8 )
 
 [node name="Slimes" type="Label" parent="Inn/today"]
 margin_left = 9.0
-margin_top = 512.0
+margin_top = 536.0
 margin_right = 137.0
-margin_bottom = 526.0
+margin_bottom = 550.0
 text = "Slimes brought in: 0"
 
 [node name="Pos_Coins" type="Position2D" parent="Inn/today/Slimes"]
@@ -165,6 +176,12 @@ margin_right = 264.0
 margin_bottom = 422.0
 text = "Today"
 
+[node name="MadeToday" type="Label" parent="Inn/today"]
+margin_left = 11.0
+margin_top = 440.0
+margin_right = 89.0
+margin_bottom = 454.0
+
 [node name="DialogBtn" type="TextureButton" parent="Inn"]
 margin_left = 61.0
 margin_top = 151.0
@@ -177,4 +194,5 @@ stretch_mode = 4
 [connection signal="pressed" from="Inn/buttons/ale" to="Inn" method="_on_ale_pressed"]
 [connection signal="pressed" from="Inn/buttons/potion" to="Inn" method="_on_potion_pressed"]
 [connection signal="pressed" from="Inn/buttons/rest" to="Inn" method="_on_rest_pressed"]
+[connection signal="pressed" from="Inn/buttons/SkillsBtn" to="." method="_on_SkillsBtn_pressed"]
 [connection signal="pressed" from="Inn/DialogBtn" to="." method="_on_DialogBtn_pressed"]

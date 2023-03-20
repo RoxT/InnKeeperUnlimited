@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/another.tres" type="Theme" id=1]
+[ext_resource path="res://textures/progress_fg.png" type="Texture" id=2]
+[ext_resource path="res://textures/progress_bg.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Skills.gd" type="Script" id=4]
+
+[node name="Skills" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 465.0
+margin_bottom = 705.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_right = 450.0
+margin_bottom = 14.0
+text = "SKILLS"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_top = 18.0
+margin_right = 450.0
+margin_bottom = 79.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 435.0
+margin_bottom = 46.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+margin_right = 70.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 31 )
+text = "Ale Making
+"
+valign = 1
+
+[node name="TextureProgress" type="TextureProgress" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+margin_left = 74.0
+margin_right = 374.0
+margin_bottom = 31.0
+theme = ExtResource( 1 )
+value = 50.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="BatchSize" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_top = 83.0
+margin_right = 450.0
+margin_bottom = 97.0
+text = "Each batch has 10 ales"
+
+[node name="LevelUp" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_top = 101.0
+margin_right = 450.0
+margin_bottom = 128.0
+text = "Level Up Ale Making"
+
+[node name="BackToInn" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -35.0
+margin_right = 95.0447
+margin_bottom = -10.0
+text = "Back to Inn"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LevelUp" to="." method="_on_LevelUp_pressed"]
+[connection signal="pressed" from="BackToInn" to="." method="_on_BackToInn_pressed"]
