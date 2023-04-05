@@ -23,6 +23,8 @@ var total_potions := 0.0
 var ale_batch := 10
 
 signal made_ale
+signal time_passed
+signal no_ale
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,9 +53,26 @@ func pass_time():
 	var ale_drank = 0
 	var potions_bought = 0
 	var slimes_brought = 0
+	var patrons_delta = 0
+
+	if S.road_quality > 0:
+		#Random number of new patrons, most likely 1 if # is lower than road quality
+		#Affected by penalties and boons
+		var direction = 1 if patrons <=  S.road_quality else 0
+		
+		
+		patrons_delta = round (rng.randfn(direction, 3))
+		patrons = max(patrons + patrons_delta, 0)
+		$today/Patrons.text = "Patrons: " + str(patrons)
+
 	if S.has_ale:
 		#Random int of ale drank most likely the number of patrons, min 0
-		ale_drank = clamp(round (rng.randfn(patrons, 3)), 0, ale)
+		if patrons == 0:
+			ale_drank = 0
+		else:
+			var ale_desired = round (rng.randfn(patrons, 3))
+			if ale_desired > ale: emit_signal("no_ale")
+			ale_drank = clamp(ale_desired, 0, ale)
 		ale -= ale_drank
 		coins += ale_drank
 		$today/Ale.text = "Ale drank: " + str(ale_drank)
@@ -86,6 +105,7 @@ func pass_time():
 		adjust_children(slimes_brought*2, $today/Slimes/Pos_Coins, coin_minus)
 		adjust_children(slimes_brought, $today/Slimes/Pos_Slimes, slime)
 		total_slimes += slimes_brought
+		S.road_quality = min(S.road_quality + slimes_brought, 25)
 		$stock/slimes.text = "Slimes: " + str(slimes)
 		if !S.has_potions && slimes > 70:
 			$DialogBtn.visible = true
@@ -94,11 +114,15 @@ func pass_time():
 		hp -= 1
 		$stock/hp.text = "HP: " + str(hp)
 		
+		
+		
 	$buttons/ale.disabled = coins <= 1 || (S.has_rest && hp <= 0)
 	$buttons/potion.disabled = coins <= 0 || slimes <= 1 || hp <= 0
 	$stock/coins.text = "Coins: " + str(coins)
 	
-	print("average ale: " + str(round(total_ale/turns)) + " potions: " + str(round(total_potions/turns)) + " slimes: " + str(round(total_slimes/turns)))
+	print("average ale: " + str(round(total_ale/turns)) + " potions: " + str(round(total_potions/turns)) + " slimes: " + str(round(total_slimes/turns)) + " patrons_delta: " + str(patrons_delta))
+	
+	emit_signal("time_passed")
 
 func adjust_children(amt:int, node: Position2D, tex:Texture):
 	var current := node.get_child_count()

@@ -15,6 +15,9 @@ var has_rest := false
 var has_ale := false
 var has_slimes := false
 var has_potions := false
+var ale_penalty := 0
+
+var road_quality := 0
 
 
 # Called when the node enters the scene tree for the first time.

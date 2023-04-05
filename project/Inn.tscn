@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/SceneController.gd" type="Script" id=1]
-[ext_resource path="res://Inn.gd" type="Script" id=2]
+[ext_resource path="res://scripts/scenes/Inn.gd" type="Script" id=2]
 [ext_resource path="res://textures/inn_potions.png" type="Texture" id=3]
 [ext_resource path="res://textures/potion.png" type="Texture" id=4]
 [ext_resource path="res://textures/slime.png" type="Texture" id=5]
@@ -85,6 +85,15 @@ margin_top = -40.0
 margin_right = -10.0
 margin_bottom = -10.0
 text = "Skills ->"
+
+[node name="OfficeBtn" type="Button" parent="Inn/buttons"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -40.0
+margin_right = 108.0
+margin_bottom = -10.0
+text = "<- Office"
 
 [node name="stock" type="CanvasLayer" parent="Inn"]
 
@@ -195,4 +204,5 @@ stretch_mode = 4
 [connection signal="pressed" from="Inn/buttons/potion" to="Inn" method="_on_potion_pressed"]
 [connection signal="pressed" from="Inn/buttons/rest" to="Inn" method="_on_rest_pressed"]
 [connection signal="pressed" from="Inn/buttons/SkillsBtn" to="." method="_on_SkillsBtn_pressed"]
+[connection signal="pressed" from="Inn/buttons/OfficeBtn" to="." method="_on_OfficeBtn_pressed"]
 [connection signal="pressed" from="Inn/DialogBtn" to="." method="_on_DialogBtn_pressed"]

@@ -35,7 +35,7 @@ func _ready() -> void:
 
 func show_text():
 	var label = tiny as RichTextLabel
-	label.bbcode_text = (events[current][page])
+	label.bbcode_text = (events[S.current_event][page])
 
 
 func show_debug_text():
@@ -45,8 +45,9 @@ func show_debug_text():
 
 func _on_Next_pressed() -> void:
 	page += 1
-	if page < events[current].size():
+	if page < events[S.current_event].size():
 		show_text()
 	else:
+		page = 0
 		S.current_event += 1
 		emit_signal("dialog_finished")
