@@ -19,13 +19,16 @@ func _ready() -> void:
 	inn.connect("no_ale", self, "on_no_ale")
 
 func _on_made_ale():
-	skills.ale_making._skill_up()
+	if skills.ale_making._skill_up():
+		inn.get_node("buttons/SkillsBtn/ColorRect").show()
 	
 func _on_made_potions():
-	skills.potion_brewing._skill_up()
+	if skills.potion_brewing._skill_up():
+		inn.get_node("buttons/SkillsBtn/ColorRect").show()
 	
 func _on_rested():
-	skills.resting._skill_up()
+	if skills.resting._skill_up():
+		inn.get_node("buttons/SkillsBtn/ColorRect").show()
 	
 func _on_time_passed():
 	if S.ale_penalty > 0: S.ale_penalty -= 1

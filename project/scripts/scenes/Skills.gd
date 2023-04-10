@@ -22,6 +22,7 @@ class Skill:
 		
 	func is_ready()->bool:
 		if ex >= next:
+			if S.ready_to_level.find(self) == -1: S.ready_to_level.push_back(self)
 			return true
 		else: return false
 	
@@ -29,6 +30,7 @@ class Skill:
 		level += 1
 		ex = ex - next
 		next += 1
+		if not is_ready(): S.ready_to_level.erase(self)
 	
 var ale_making := Skill.new("ales")
 var potion_brewing := Skill.new("potions")

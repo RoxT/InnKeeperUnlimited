@@ -44,6 +44,7 @@ func _enter_tree():
 	$buttons/potion.visible = S.has_potions
 	$stock/potions.visible = S.has_potions
 	$today/Potions.visible = S.has_potions
+	$buttons/SkillsBtn/ColorRect.visible = S.ready_to_level.size() > 0
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

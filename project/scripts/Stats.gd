@@ -16,6 +16,7 @@ var has_ale := false
 var has_slimes := false
 var has_potions := false
 var ale_penalty := 0
+var ready_to_level := []
 
 var road_quality := 0
 

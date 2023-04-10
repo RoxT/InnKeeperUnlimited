@@ -23,10 +23,16 @@ margin_bottom = 14.0
 text = "Office"
 align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="BarGossip" type="Label" parent="MarginContainer/HBoxContainer"]
 margin_top = 18.0
 margin_right = 450.0
 margin_bottom = 32.0
+text = "Gossip About The Bar:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_top = 36.0
+margin_right = 450.0
+margin_bottom = 50.0
 
 [node name="RoadLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
 margin_right = 85.0
@@ -42,15 +48,15 @@ text = "0/50"
 align = 2
 
 [node name="BuffsLabel" type="Label" parent="MarginContainer/HBoxContainer"]
-margin_top = 36.0
-margin_right = 450.0
-margin_bottom = 50.0
-text = "Penalties and Boons:"
-
-[node name="BuffsList" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_top = 54.0
 margin_right = 450.0
 margin_bottom = 68.0
+text = "Penalties and Boons:"
+
+[node name="BuffsList" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_top = 72.0
+margin_right = 450.0
+margin_bottom = 86.0
 
 [node name="NoAleLabel" type="Label" parent="MarginContainer/HBoxContainer/BuffsList"]
 margin_right = 450.0
