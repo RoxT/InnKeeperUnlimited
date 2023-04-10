@@ -28,7 +28,7 @@ func _on_rested():
 	skills.resting._skill_up()
 	
 func _on_time_passed():
-	S.ale_penalty = (S.ale_penalty-1) or 0
+	if S.ale_penalty > 0: S.ale_penalty -= 1
 	
 func on_no_ale():
 	S.ale_penalty = 10

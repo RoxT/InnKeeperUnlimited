@@ -56,23 +56,27 @@ func pass_time():
 	var potions_bought = 0
 	var slimes_brought = 0
 	var patrons_delta = 0
+	var direction = 0
 
 	if S.road_quality > 0:
 		#Random number of new patrons, most likely 1 if # is lower than road quality
 		#Affected by penalties and boons
-		var direction = 1 if patrons <=  S.road_quality else 0
-		
-		
+		if S.ale_penalty > 0: 
+			direction -= 1
+		else:
+			if patrons <= S.road_quality: 
+				direction += 1
 		patrons_delta = round (rng.randfn(direction, 3))
 		patrons = max(patrons + patrons_delta, 0)
 		$today/Patrons.text = "Patrons: " + str(patrons)
 
 	if S.has_ale:
 		#Random int of ale drank most likely the number of patrons, min 0
+		var ale_desired := 0
 		if patrons == 0:
 			ale_drank = 0
 		else:
-			var ale_desired = round (rng.randfn(patrons, 3))
+			ale_desired = round (rng.randfn(patrons, 3))
 			if ale_desired > ale: emit_signal("no_ale")
 			ale_drank = clamp(ale_desired, 0, ale)
 		ale -= ale_drank
@@ -122,7 +126,7 @@ func pass_time():
 	$buttons/potion.disabled = coins <= 0 || slimes <= 1 || hp <= 0
 	$stock/coins.text = "Coins: " + str(coins)
 	
-	print("average ale: " + str(round(total_ale/turns)) + " potions: " + str(round(total_potions/turns)) + " slimes: " + str(round(total_slimes/turns)) + " patrons_delta: " + str(patrons_delta))
+	print("average ale: " + str(round(total_ale/turns)) + " potions: " + str(round(total_potions/turns)) + " slimes: " + str(round(total_slimes/turns)) + " patrons_delta: " + str(patrons_delta) + " popularity: " + str(direction))
 	
 	emit_signal("time_passed")
 
