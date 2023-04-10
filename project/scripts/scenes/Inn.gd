@@ -23,6 +23,8 @@ var total_potions := 0.0
 var ale_batch := 10
 
 signal made_ale
+signal made_potions
+signal rested
 signal time_passed
 signal no_ale
 
@@ -85,8 +87,8 @@ func pass_time():
 			$DialogBtn.visible = true
 	
 	if S.has_potions:
-		#Random int of potions bought most likely half number of patrons, min 0
-		potions_bought = clamp(round (rng.randfn(round(patrons/2.0), 3)), 0, potions)
+		#Random int of potions bought most likely 1/3 number of patrons, min 0
+		potions_bought = clamp(round (rng.randfn(round(patrons/3.0), 3)), 0, potions)
 		potions -= potions_bought
 		coins += potions_bought
 		$today/Potions.text = "Potions bought: " + str(potions_bought)
@@ -97,8 +99,8 @@ func pass_time():
 			$DialogBtn.visible = true
 
 	if S.has_slimes:
-		#Random int of slimes returned most likely a third of the number of patrons, min 0
-		slimes_brought = clamp(round (rng.randfn(round(patrons/3.0), 3)), 0, coins/2)
+		#Random int of slimes returned most likely a quarter of the number of patrons, min 0
+		slimes_brought = clamp(round (rng.randfn(round(patrons/4.0), 3)), 0, coins/2)
 		coins -= slimes_brought*2
 		slimes += slimes_brought
 		$today/Slimes.text = "Slimes returned: " + str(slimes_brought)
@@ -150,6 +152,7 @@ func _on_potion_pressed():
 	slimes -= 2
 	potions += 10
 	made_today.text = "Made 10 potions"
+	emit_signal("made_potions")
 	pass_time()
 
 
@@ -159,5 +162,6 @@ func _on_rest_pressed():
 	else: 
 		hp = max_hp + 1
 	made_today.text = "Rested"
+	emit_signal("rested")
 	pass_time()
 

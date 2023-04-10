@@ -13,11 +13,19 @@ func _ready() -> void:
 	skills.connect("back_to_inn", self, "_on_back_to_inn")
 	office.connect("back_to_inn", self, "_on_back_to_inn")
 	inn.connect("made_ale", self, "_on_made_ale")
+	inn.connect("made_potions", self, "_on_made_potions")
+	inn.connect("rested", self, "_on_rested")
 	inn.connect("time_passed", self, "_on_time_passed")
 	inn.connect("no_ale", self, "on_no_ale")
 
 func _on_made_ale():
 	skills.ale_making._skill_up()
+	
+func _on_made_potions():
+	skills.potion_brewing._skill_up()
+	
+func _on_rested():
+	skills.resting._skill_up()
 	
 func _on_time_passed():
 	S.ale_penalty = (S.ale_penalty-1) or 0

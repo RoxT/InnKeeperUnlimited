@@ -14,30 +14,33 @@ script = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 15.0
 margin_top = 15.0
 margin_right = 465.0
 margin_bottom = 705.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 450.0
 margin_bottom = 14.0
 text = "SKILLS"
 align = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 450.0
-margin_bottom = 79.0
+margin_bottom = 48.0
 
-[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
-margin_left = 15.0
-margin_top = 15.0
-margin_right = 435.0
-margin_bottom = 46.0
+[node name="AleContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 450.0
+margin_bottom = 132.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/AleContainer"]
+margin_right = 450.0
+margin_bottom = 31.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/AleContainer/HBoxContainer"]
 margin_right = 70.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 0, 31 )
@@ -45,7 +48,7 @@ text = "Ale Making
 "
 valign = 1
 
-[node name="TextureProgress" type="TextureProgress" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="TextureProgress" type="TextureProgress" parent="MarginContainer/VBoxContainer/AleContainer/HBoxContainer"]
 margin_left = 74.0
 margin_right = 374.0
 margin_bottom = 31.0
@@ -54,17 +57,103 @@ value = 50.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
 
-[node name="BatchSize" type="Label" parent="MarginContainer/HBoxContainer"]
-margin_top = 83.0
+[node name="BatchLabel" type="Label" parent="MarginContainer/VBoxContainer/AleContainer"]
+margin_top = 35.0
 margin_right = 450.0
-margin_bottom = 97.0
+margin_bottom = 49.0
 text = "Each batch has 10 ales"
 
-[node name="LevelUp" type="Button" parent="MarginContainer/HBoxContainer"]
-margin_top = 101.0
+[node name="LevelUpAle" type="Button" parent="MarginContainer/VBoxContainer/AleContainer"]
+margin_top = 53.0
 margin_right = 450.0
-margin_bottom = 128.0
+margin_bottom = 80.0
 text = "Level Up Ale Making"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 136.0
+margin_right = 450.0
+margin_bottom = 166.0
+
+[node name="RestContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 170.0
+margin_right = 450.0
+margin_bottom = 250.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/RestContainer"]
+margin_right = 450.0
+margin_bottom = 31.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/RestContainer/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 31 )
+text = "Rest
+"
+valign = 1
+
+[node name="TextureProgress" type="TextureProgress" parent="MarginContainer/VBoxContainer/RestContainer/HBoxContainer"]
+margin_left = 32.0
+margin_right = 332.0
+margin_bottom = 31.0
+theme = ExtResource( 1 )
+value = 50.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="BatchLabel" type="Label" parent="MarginContainer/VBoxContainer/RestContainer"]
+margin_top = 35.0
+margin_right = 450.0
+margin_bottom = 49.0
+text = "Each batch has 10 ales"
+
+[node name="LevelUpRest" type="Button" parent="MarginContainer/VBoxContainer/RestContainer"]
+margin_top = 53.0
+margin_right = 450.0
+margin_bottom = 80.0
+text = "Level Up Ale Making"
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 254.0
+margin_right = 450.0
+margin_bottom = 284.0
+
+[node name="PotionContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 288.0
+margin_right = 450.0
+margin_bottom = 368.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PotionContainer"]
+margin_right = 450.0
+margin_bottom = 31.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PotionContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 31 )
+text = "Potion Brewing 
+"
+valign = 1
+
+[node name="TextureProgress" type="TextureProgress" parent="MarginContainer/VBoxContainer/PotionContainer/HBoxContainer"]
+margin_left = 104.0
+margin_right = 404.0
+margin_bottom = 31.0
+theme = ExtResource( 1 )
+value = 50.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="BatchLabel" type="Label" parent="MarginContainer/VBoxContainer/PotionContainer"]
+margin_top = 35.0
+margin_right = 450.0
+margin_bottom = 49.0
+text = "Each batch has 10 potions"
+
+[node name="LevelUpPotion" type="Button" parent="MarginContainer/VBoxContainer/PotionContainer"]
+margin_top = 53.0
+margin_right = 450.0
+margin_bottom = 80.0
+text = "Level Up Potion Brewing"
 
 [node name="BackToInn" type="Button" parent="."]
 anchor_top = 1.0
@@ -75,5 +164,7 @@ margin_right = 95.0447
 margin_bottom = -10.0
 text = "Back to Inn"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/LevelUp" to="." method="_on_LevelUp_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/AleContainer/LevelUpAle" to="." method="_on_LevelUpAle_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RestContainer/LevelUpRest" to="." method="_on_LevelUpRest_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PotionContainer/LevelUpPotion" to="." method="_on_LevelUpPotion_pressed"]
 [connection signal="pressed" from="BackToInn" to="." method="_on_BackToInn_pressed"]
