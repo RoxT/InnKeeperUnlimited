@@ -110,7 +110,7 @@ text = "Each batch has 10 ales"
 margin_top = 53.0
 margin_right = 450.0
 margin_bottom = 80.0
-text = "Level Up Ale Making"
+text = "Level Up Resting"
 
 [node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 254.0
