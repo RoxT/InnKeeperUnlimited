@@ -13,14 +13,25 @@ func _ready() -> void:
 	skills.connect("back_to_inn", self, "_on_back_to_inn")
 	office.connect("back_to_inn", self, "_on_back_to_inn")
 	inn.connect("made_ale", self, "_on_made_ale")
+	inn.connect("made_potions", self, "_on_made_potions")
+	inn.connect("rested", self, "_on_rested")
 	inn.connect("time_passed", self, "_on_time_passed")
 	inn.connect("no_ale", self, "on_no_ale")
 
 func _on_made_ale():
-	skills.ale_making._skill_up()
+	if skills.ale_making._skill_up():
+		inn.get_node("buttons/SkillsBtn/ColorRect").show()
+	
+func _on_made_potions():
+	if skills.potion_brewing._skill_up():
+		inn.get_node("buttons/SkillsBtn/ColorRect").show()
+	
+func _on_rested():
+	if skills.resting._skill_up():
+		inn.get_node("buttons/SkillsBtn/ColorRect").show()
 	
 func _on_time_passed():
-	S.ale_penalty = (S.ale_penalty-1) or 0
+	if S.ale_penalty > 0: S.ale_penalty -= 1
 	
 func on_no_ale():
 	S.ale_penalty = 10
