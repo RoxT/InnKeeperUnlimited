@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Skill",
+"language": "GDScript",
+"path": "res://skills/RSkill.gd"
+}, {
+"base": "Resource",
+"class": "SkillSet",
+"language": "GDScript",
+"path": "res://skills/RSkillSet.gd"
+} ]
+_global_script_class_icons={
+"Skill": "",
+"SkillSet": ""
+}
+
 [application]
 
 config/name="InnKeeperUnlimited"

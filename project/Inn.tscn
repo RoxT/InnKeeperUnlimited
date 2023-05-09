@@ -87,6 +87,7 @@ margin_bottom = -10.0
 text = "Skills ->"
 
 [node name="ColorRect" type="ColorRect" parent="Inn/buttons/SkillsBtn"]
+visible = false
 margin_left = -18.0
 margin_top = 9.0
 margin_right = -3.0

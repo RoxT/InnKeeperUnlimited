@@ -5,10 +5,11 @@ var ale := 0
 var slimes := 0
 var potions = 0
 var hp := 0
-var max_hp := 3
 
 var patrons := 3
 var turns := 0
+
+var batch:S.Batch
 
 var rng = RandomNumberGenerator.new()
 var coin:Texture = load("res://textures/coin.png")
@@ -16,17 +17,18 @@ var coin_minus:Texture = load("res://textures/coin_minus.png")
 var slime:Texture = load("res://textures/slime.png")
 onready var made_today := $today/MadeToday
 
+#stats
 var total_ale := 0.0
 var total_slimes := 0.0
 var total_potions := 0.0
 
-var ale_batch := 10
 
 signal made_ale
 signal made_potions
 signal rested
 signal time_passed
 signal no_ale
+signal event_happened (key)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,8 +46,6 @@ func _enter_tree():
 	$buttons/potion.visible = S.has_potions
 	$stock/potions.visible = S.has_potions
 	$today/Potions.visible = S.has_potions
-	$buttons/SkillsBtn/ColorRect.visible = S.ready_to_level.size() > 0
-	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -88,8 +88,10 @@ func pass_time():
 		$stock/ale.text = "Ale: " + str(ale)
 		if !S.has_rest && ale > 30:
 			$DialogBtn.visible = true
-		elif !S.has_slimes && ale > 50:
+			emit_signal("event_happened", S.events.REST)
+		elif !S.has_slimes && ale > 70:
 			$DialogBtn.visible = true
+			emit_signal("event_happened", S.events.REWARDS)
 	
 	if S.has_potions:
 		#Random int of potions bought most likely 1/3 number of patrons, min 0
@@ -102,6 +104,7 @@ func pass_time():
 		$stock/potions.text = "Potions: " + str(potions)
 		if potions > 30:
 			$DialogBtn.visible = true
+			emit_signal("event_happened", S.events.END)
 
 	if S.has_slimes:
 		#Random int of slimes returned most likely a quarter of the number of patrons, min 0
@@ -116,6 +119,7 @@ func pass_time():
 		$stock/slimes.text = "Slimes: " + str(slimes)
 		if !S.has_potions && slimes > 70:
 			$DialogBtn.visible = true
+			emit_signal("event_happened", S.events.POTIONS)
 	
 	if S.has_rest:
 		hp -= 1
@@ -144,28 +148,31 @@ func adjust_children(amt:int, node: Position2D, tex:Texture):
 		for i in range(current, amt, -1):
 			node.get_child(i-1).queue_free()
 
+func set_ready_to_level_up(b:bool):
+	$buttons/SkillsBtn/ColorRect.visible = b
+
 func _on_ale_pressed():
 	coins -= 2
-	ale += ale_batch
+	ale += batch.ale
 	emit_signal("made_ale")
-	made_today.text = "Made " + str(ale_batch) + " ales"
+	made_today.text = "Made " + str(batch.ale) + " ales"
 	pass_time()
 
 
 func _on_potion_pressed():
 	coins -= 1
 	slimes -= 2
-	potions += 10
+	potions += batch.potion
 	made_today.text = "Made 10 potions"
 	emit_signal("made_potions")
 	pass_time()
 
 
 func _on_rest_pressed():
-	if hp >= max_hp: 
-		hp =max_hp + 2 
+	if hp >= batch.rest: 
+		hp = batch.rest + 2 
 	else: 
-		hp = max_hp + 1
+		hp = batch.rest + 1
 	made_today.text = "Rested"
 	emit_signal("rested")
 	pass_time()

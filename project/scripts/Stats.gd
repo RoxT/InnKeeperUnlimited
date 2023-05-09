@@ -1,7 +1,5 @@
+#Autoloaded Stats
 extends Node
-
-
-var current_event := 0
 
 enum events {
 	OPENING,
@@ -20,6 +18,14 @@ var ready_to_level := []
 
 var road_quality := 0
 
+class Batch:
+	var ale :=0
+	var potion :=0
+	var rest := 0
+	func init(ale_n, potion_n, rest_n):
+		ale = ale_n
+		potion = potion_n
+		rest = rest_n
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,10 +36,10 @@ func _ready() -> void:
 #func _process(delta: float) -> void:
 #	pass
 
-func update_visible():
-	match current_event-1:
-		0: has_ale = true
-		1: has_rest = true
-		2: has_slimes = true
-		3: has_potions = true
+func update_visible(key:int):
+	match key:
+		events.OPENING: has_ale = true
+		events.REST: has_rest = true
+		events.REWARDS: has_slimes = true
+		events.POTIONS: has_potions = true
 		var x: print("unknown event number: " + str(x))

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://skills/RSkillSet.gd" type="Script" id=1]
+[ext_resource path="res://skills/ale.tres" type="Resource" id=2]
+[ext_resource path="res://skills/potion.tres" type="Resource" id=3]
+[ext_resource path="res://skills/rest.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+skills = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]

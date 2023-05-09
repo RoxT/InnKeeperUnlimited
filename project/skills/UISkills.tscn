@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://skills/UiSkills.gd" type="Script" id=1]
+[ext_resource path="res://skills/BasicSkillSet.tres" type="Resource" id=4]
+
+[node name="UiSkills" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+skills_r = ExtResource( 4 )
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 465.0
+margin_bottom = 705.0
+
+[node name="Label" type="Label" parent="Margin/VBox"]
+margin_right = 450.0
+margin_bottom = 14.0
+text = "SKILLS"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="Margin/VBox"]
+margin_top = 18.0
+margin_right = 450.0
+margin_bottom = 22.0
+grow_horizontal = 0
+
+[node name="Skills" type="VBoxContainer" parent="Margin/VBox"]
+margin_top = 26.0
+margin_right = 450.0
+margin_bottom = 26.0
+
+[node name="BackToInn" type="Button" parent="."]
+margin_left = 9.0
+margin_top = 683.0
+margin_right = 93.0447
+margin_bottom = 710.0
+text = "Back to Inn"
+
+[connection signal="pressed" from="BackToInn" to="." method="_on_BackToInn_pressed"]

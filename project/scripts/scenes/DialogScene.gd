@@ -19,23 +19,23 @@ var events := {
 }
 
 var page := 0
-onready var current:int = S.current_event
+var event
 
 onready var default:RichTextLabel = $MarginContainer/VBoxContainer/RichTextLabelDefault
 onready var tiny:RichTextLabel = $MarginContainer/VBoxContainer/RichTextLabelTiny
 onready var labels = [default, tiny]
 
-signal dialog_finished
+signal dialog_finished (key)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	default.bbcode_enabled = true
 	tiny.bbcode_enabled = true
-	show_text()
 
-func show_text():
+func show_text(event_key:int):
+	event = event_key
 	var label = tiny as RichTextLabel
-	label.bbcode_text = (events[S.current_event][page])
+	label.bbcode_text = (events[event_key][page])
 
 
 func show_debug_text():
@@ -45,9 +45,9 @@ func show_debug_text():
 
 func _on_Next_pressed() -> void:
 	page += 1
-	if page < events[S.current_event].size():
-		show_text()
+	if page < events[event].size():
+		show_text(event)
 	else:
 		page = 0
-		S.current_event += 1
-		emit_signal("dialog_finished")
+		emit_signal("dialog_finished", event)
+		event = null
