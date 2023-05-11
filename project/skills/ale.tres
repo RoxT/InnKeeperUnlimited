@@ -6,7 +6,8 @@
 script = ExtResource( 1 )
 title = "Ale Making"
 plural = "ales"
+label = "ALE"
 level = 1
 next = 5
-ex = 0
+ex = 2
 batch_size = 10

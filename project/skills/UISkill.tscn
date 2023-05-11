@@ -4,7 +4,7 @@
 [ext_resource path="res://textures/progress_bg.png" type="Texture" id=2]
 [ext_resource path="res://resources/another.tres" type="Theme" id=3]
 [ext_resource path="res://skills/UISkill.gd" type="Script" id=4]
-[ext_resource path="res://skills/ale.tres" type="Resource" id=5]
+[ext_resource path="res://skills/rest.tres" type="Resource" id=5]
 
 [node name="Skill" type="MarginContainer"]
 anchor_right = 1.0
@@ -26,7 +26,7 @@ margin_bottom = 31.0
 margin_right = 28.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 0, 31 )
-text = "Title"
+text = "Rest"
 valign = 1
 
 [node name="TextureProgress" type="TextureProgress" parent="VBox/HBox"]
@@ -34,8 +34,8 @@ margin_left = 32.0
 margin_right = 332.0
 margin_bottom = 31.0
 theme = ExtResource( 3 )
-max_value = 10.0
-value = 10.0
+max_value = 5.0
+value = 5.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
 
@@ -49,17 +49,17 @@ margin_left = -20.0
 margin_top = -7.0
 margin_right = 20.0
 margin_bottom = 7.0
-text = "0/10"
+text = "20/5"
 align = 1
 
 [node name="BatchLabel" type="Label" parent="VBox"]
 margin_top = 35.0
 margin_right = 450.0
 margin_bottom = 49.0
-text = "Each batch has # plurals"
+text = "Each batch has 3 hp"
 
 [node name="LevelUpBtn" type="Button" parent="VBox"]
 margin_top = 53.0
 margin_right = 450.0
 margin_bottom = 80.0
-text = "Level up Title"
+text = "Level up Rest"

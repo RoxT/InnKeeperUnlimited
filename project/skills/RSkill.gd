@@ -6,6 +6,7 @@ const BATCH := "Each batch has %s %s"
 
 export var title:String
 export var plural:String
+export var label:String
 
 export var level := 1
 export var next := 5
@@ -23,14 +24,15 @@ func is_ready()->bool:
 		return true
 	else: return false
 
-func level_up():
+func level_up()->int:
 	level += 1
 	ex = ex - next
 	next += 1
 	batch_size += 1
-	if not is_ready(): S.ready_to_level.erase(self)
+	return level
 
-
+func get_batch_text()->String:
+	return BATCH % [batch_size, plural]
 
 
 

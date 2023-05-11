@@ -6,6 +6,7 @@
 script = ExtResource( 1 )
 title = "Potion Brewing"
 plural = "potions"
+label = "POTIONS"
 level = 1
 next = 5
 ex = 0
