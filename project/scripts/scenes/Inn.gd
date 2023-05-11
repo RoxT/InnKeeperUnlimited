@@ -94,8 +94,8 @@ func pass_time():
 			emit_signal("event_happened", S.events.REWARDS)
 	
 	if S.has_potions:
-		#Random int of potions bought most likely 1/3 number of patrons, min 0
-		potions_bought = clamp(round (rng.randfn(round(patrons/3.0), 3)), 0, potions)
+		#Random int of potions bought most likely 1/4 number of patrons, min 0
+		potions_bought = clamp(round (rng.randfn(round(patrons/4.0), 3)), 0, potions)
 		potions -= potions_bought
 		coins += potions_bought
 		$today/Potions.text = "Potions bought: " + str(potions_bought)
@@ -117,7 +117,7 @@ func pass_time():
 		total_slimes += slimes_brought
 		S.road_quality = min(S.road_quality + slimes_brought, 25)
 		$stock/slimes.text = "Slimes: " + str(slimes)
-		if !S.has_potions && slimes > 70:
+		if !S.has_potions && slimes > 70 && patrons >= 30:
 			$DialogBtn.visible = true
 			emit_signal("event_happened", S.events.POTIONS)
 	
@@ -125,10 +125,8 @@ func pass_time():
 		hp -= 1
 		$stock/hp.text = "HP: " + str(hp)
 		
-		
-		
-	$buttons/ale.disabled = coins <= 1 || (S.has_rest && hp <= 0)
-	$buttons/potion.disabled = coins <= 0 || slimes <= 1 || hp <= 0
+	$buttons/ale.disabled = coins < 2 || (S.has_rest && hp <= 0)
+	$buttons/potion.disabled = coins < 2 || slimes <= 1 || hp <= 0
 	$stock/coins.text = "Coins: " + str(coins)
 	
 	print("average ale: " + str(round(total_ale/turns)) + " potions: " + str(round(total_potions/turns)) + " slimes: " + str(round(total_slimes/turns)) + " patrons_delta: " + str(patrons_delta) + " popularity: " + str(direction))
@@ -158,15 +156,15 @@ func _on_ale_pressed():
 	made_today.text = "Made " + str(batch.ale) + " ales"
 	pass_time()
 
-
 func _on_potion_pressed():
-	coins -= 1
-	slimes -= 2
-	potions += batch.potion
-	made_today.text = "Made 10 potions"
+	var desired_potions := batch.potion
+	desired_potions = min(batch.potion, slimes)
+	coins -= 2
+	slimes -= desired_potions
+	potions += desired_potions
+	made_today.text = "Made %s potions" % desired_potions
 	emit_signal("made_potions")
 	pass_time()
-
 
 func _on_rest_pressed():
 	if hp >= batch.rest: 

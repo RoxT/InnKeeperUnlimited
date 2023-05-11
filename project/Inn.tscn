@@ -59,12 +59,12 @@ icon = ExtResource( 4 )
 position = Vector2( 129, 12 )
 texture = ExtResource( 6 )
 
-[node name="Slime" type="Sprite" parent="Inn/buttons/potion"]
-position = Vector2( 157, 11 )
-texture = ExtResource( 5 )
+[node name="Coin4" type="Sprite" parent="Inn/buttons/potion"]
+position = Vector2( 150, 12 )
+texture = ExtResource( 6 )
 
-[node name="Slime2" type="Sprite" parent="Inn/buttons/potion"]
-position = Vector2( 193, 11 )
+[node name="Slime" type="Sprite" parent="Inn/buttons/potion"]
+position = Vector2( 191, 11 )
 texture = ExtResource( 5 )
 
 [node name="rest" type="Button" parent="Inn/buttons"]

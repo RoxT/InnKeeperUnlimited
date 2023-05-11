@@ -24,24 +24,11 @@ margin_bottom = 705.0
 
 [node name="RichTextLabelTiny" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 margin_right = 450.0
-margin_bottom = 555.0
+margin_bottom = 659.0
 size_flags_vertical = 3
 custom_fonts/italics_font = ExtResource( 1 )
 custom_fonts/bold_font = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 2 )
-bbcode_enabled = true
-bbcode_text = "HEllo I'm tiny
-[b]Hello I'm TinierBold[/b]
-[i]Hello I'm Tinier[/i]"
-text = "HEllo I'm tiny
-Hello I'm TinierBold
-Hello I'm Tinier"
-
-[node name="RichTextLabelDefault" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-margin_top = 559.0
-margin_right = 450.0
-margin_bottom = 659.0
-rect_min_size = Vector2( 0, 100 )
 bbcode_enabled = true
 bbcode_text = "HEllo I'm tiny
 [b]Hello I'm TinierBold[/b]

@@ -10,4 +10,4 @@ label = "REST"
 level = 1
 next = 5
 ex = 0
-batch_size = 10
+batch_size = 3

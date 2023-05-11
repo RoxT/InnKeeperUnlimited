@@ -49,7 +49,7 @@ func set_skill(value:Resource):
 func _on_level_up_btn_pressed():
 	skill.level_up()
 	var dialog = SkillDialogScene.instance()
-	add_child(dialog)
+	get_node("/root").add_child(dialog)
 	dialog.show_text(skill)
 	update()
 	

@@ -9,5 +9,5 @@ plural = "ales"
 label = "ALE"
 level = 1
 next = 5
-ex = 2
+ex = 0
 batch_size = 10
