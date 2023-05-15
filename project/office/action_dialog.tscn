@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/tinierBold.tres" type="DynamicFont" id=1]
+[ext_resource path="res://textures/icon-trainee.png" type="Texture" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 480.0
+margin_bottom = 720.0
+
+[node name="Title" type="Label" parent="VBox"]
+margin_right = 480.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 1 )
+text = "Train a new brewer"
+align = 1
+
+[node name="Larger" type="Label" parent="VBox"]
+margin_top = 20.0
+margin_right = 480.0
+margin_bottom = 34.0
+text = "More batches per day"
+
+[node name="Amount" type="Label" parent="VBox"]
+margin_top = 38.0
+margin_right = 480.0
+margin_bottom = 52.0
+text = "100 ales"
+
+[node name="Cost" type="Label" parent="VBox"]
+margin_top = 56.0
+margin_right = 480.0
+margin_bottom = 70.0
+text = "Cost:"
+
+[node name="Options" type="HBoxContainer" parent="VBox"]
+margin_top = 74.0
+margin_right = 480.0
+margin_bottom = 101.0
+
+[node name="Button" type="Button" parent="VBox/Options"]
+margin_right = 59.0447
+margin_bottom = 27.0
+text = "100 ale"
+
+[node name="Or" type="Label" parent="VBox/Options"]
+margin_left = 63.0
+margin_top = 6.0
+margin_right = 76.0
+margin_bottom = 20.0
+text = "or"
+
+[node name="Button2" type="Button" parent="VBox/Options"]
+margin_left = 80.0
+margin_right = 154.045
+margin_bottom = 27.0
+text = "100 coins"
+
+[node name="Button" type="Button" parent="VBox"]
+margin_top = 105.0
+margin_right = 83.0447
+margin_bottom = 132.0
+size_flags_horizontal = 0
+text = "Nevermind"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 9, 9 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 469, 9 )
+texture = ExtResource( 2 )

@@ -10,7 +10,7 @@ var event_queue := [S.events.OPENING]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	dialog.connect("dialog_finished", self, "on_dialog_finished")
+	dialog.connect("dialog_finished", self, "_on_dialog_finished")
 	skills.connect("back_to_inn", self, "_on_back_to_inn")
 	office.connect("back_to_inn", self, "_on_back_to_inn")
 	inn.connect("made_ale", self, "_on_made_ale")
@@ -20,6 +20,13 @@ func _ready() -> void:
 	inn.connect("no_ale", self, "on_no_ale")
 	inn.connect("event_happened", self, "_on_event_happened")
 	inn.batch = skills.get_batch_sizes()
+
+func _on_back_to_inn():
+	remove_child(active_scene)
+	#inn.ale_batch = skills.ale_making.level + 10
+	add_child(inn)
+	inn.batch = skills.get_batch_sizes()
+	inn.set_ready_to_level_up(skills.any_ready())
 
 func _on_made_ale():
 	if skills.skill_up(SkillSet.names.ALE):
@@ -43,12 +50,6 @@ func _on_event_happened(key:int):
 	if !event_queue.has(key):
 		event_queue.push_back(key)
 
-func _on_back_to_inn():
-	remove_child(active_scene)
-	#inn.ale_batch = skills.ale_making.level + 10
-	add_child(inn)
-	inn.batch = skills.get_batch_sizes()
-	inn.set_ready_to_level_up(skills.any_ready())
 
 func _on_SkillsBtn_pressed():
 	remove_child(inn)
@@ -60,7 +61,7 @@ func _on_OfficeBtn_pressed() -> void:
 	active_scene = office
 	add_child(office)
 	
-func on_dialog_finished(key:int):
+func _on_dialog_finished(key:int):
 	remove_child(dialog)
 	S.update_visible(key)
 	add_child(inn)

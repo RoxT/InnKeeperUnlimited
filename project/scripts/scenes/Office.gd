@@ -28,3 +28,7 @@ func init():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
+
+
+func _on_Control_pressed() -> void:
+	pass # Replace with function body.

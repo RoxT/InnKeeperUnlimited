@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/scenes/Office.gd" type="Script" id=1]
+[ext_resource path="res://office/office_action.tscn" type="PackedScene" id=2]
 
 [node name="Office" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,35 +12,35 @@ anchor_bottom = 1.0
 margin_right = 480.0
 margin_bottom = 722.0
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBox" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 15.0
 margin_top = 15.0
 margin_right = 465.0
 margin_bottom = 707.0
 
-[node name="Title" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/HBox"]
 margin_right = 450.0
 margin_bottom = 14.0
 text = "Office"
 align = 1
 
-[node name="BarGossip" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="BarGossip" type="Label" parent="MarginContainer/HBox"]
 margin_top = 18.0
 margin_right = 450.0
 margin_bottom = 32.0
 text = "Gossip About The Bar:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/HBox"]
 margin_top = 36.0
 margin_right = 450.0
 margin_bottom = 50.0
 
-[node name="RoadLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="RoadLabel" type="Label" parent="MarginContainer/HBox/HBox"]
 margin_right = 85.0
 margin_bottom = 14.0
 text = "Road Quality "
 
-[node name="RoadScore" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="RoadScore" type="Label" parent="MarginContainer/HBox/HBox"]
 margin_left = 89.0
 margin_right = 450.0
 margin_bottom = 14.0
@@ -47,21 +48,27 @@ size_flags_horizontal = 3
 text = "0/50"
 align = 2
 
-[node name="BuffsLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="BuffsLabel" type="Label" parent="MarginContainer/HBox"]
 margin_top = 54.0
 margin_right = 450.0
 margin_bottom = 68.0
 text = "Penalties and Boons:"
 
-[node name="BuffsList" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="BuffsList" type="VBoxContainer" parent="MarginContainer/HBox"]
 margin_top = 72.0
 margin_right = 450.0
 margin_bottom = 86.0
 
-[node name="NoAleLabel" type="Label" parent="MarginContainer/HBoxContainer/BuffsList"]
+[node name="NoAleLabel" type="Label" parent="MarginContainer/HBox/BuffsList"]
 margin_right = 450.0
 margin_bottom = 14.0
 text = "No ale (fewer patrons)"
+
+[node name="OfficeAction" parent="MarginContainer/HBox" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 90.0
+margin_right = 450.0
+margin_bottom = 119.0
 
 [node name="BackToInn" type="Button" parent="."]
 margin_left = 364.0
@@ -70,4 +77,5 @@ margin_right = 465.0
 margin_bottom = 707.0
 text = "Back to Inn"
 
+[connection signal="pressed" from="MarginContainer/HBox/OfficeAction" to="." method="_on_Control_pressed"]
 [connection signal="pressed" from="BackToInn" to="." method="_on_BackToInn_pressed"]
