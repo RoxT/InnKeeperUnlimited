@@ -39,7 +39,7 @@ align = 1
 margin_top = 20.0
 margin_right = 224.0
 margin_bottom = 34.0
-text = "More batches per day"
+text = "Additional batch per day"
 
 [node name="Amount" type="Label" parent="Dialog_VBox"]
 margin_top = 38.0
@@ -77,5 +77,3 @@ margin_bottom = 27.0
 text = "100 coins"
 
 [connection signal="toggled" from="OfficeAction" to="." method="_on_OfficeAction_toggled"]
-[connection signal="pressed" from="Dialog_VBox/Options/Ale100Btn" to="OfficeAction" method="_on_Ale100Btn_pressed"]
-[connection signal="pressed" from="Dialog_VBox/Options/Coin100Btn" to="OfficeAction" method="_on_Coin100Btn_pressed"]

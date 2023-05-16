@@ -28,7 +28,7 @@ func skill_up(i: int)->bool:
 	
 func get_batch_sizes()->S.Batch:
 	var batch := S.Batch.new()
-	batch.ale = skills[0].batch_size
-	batch.potion = skills[1].batch_size
+	batch.ale = skills[0].batch_size * S.staff[S.actions.BREWER]
+	batch.potion = skills[1].batch_size 
 	batch.rest = skills[2].batch_size
-	return batch
+	return batch as S.Batch

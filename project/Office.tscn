@@ -24,16 +24,21 @@ margin_bottom = 14.0
 text = "Office"
 align = 1
 
-[node name="BarGossip" type="Label" parent="MarginContainer/HBox"]
+[node name="GossipLabel" type="Label" parent="MarginContainer/HBox"]
 margin_top = 18.0
 margin_right = 450.0
 margin_bottom = 32.0
 text = "Gossip About The Bar:"
 
-[node name="BuffsList" type="VBoxContainer" parent="MarginContainer/HBox"]
+[node name="BarGossip" type="VBoxContainer" parent="MarginContainer/HBox"]
 margin_top = 36.0
 margin_right = 450.0
-margin_bottom = 50.0
+margin_bottom = 36.0
+
+[node name="BuffsList" type="VBoxContainer" parent="MarginContainer/HBox"]
+margin_top = 40.0
+margin_right = 450.0
+margin_bottom = 54.0
 
 [node name="NoAleLabel" type="Label" parent="MarginContainer/HBox/BuffsList"]
 margin_right = 450.0
@@ -41,14 +46,14 @@ margin_bottom = 14.0
 text = "No ale (fewer patrons)"
 
 [node name="OfficeAction" parent="MarginContainer/HBox" instance=ExtResource( 2 )]
-margin_top = 54.0
+margin_top = 58.0
 margin_right = 450.0
-margin_bottom = 188.0
+margin_bottom = 192.0
 
 [node name="HBox" type="HBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 192.0
+margin_top = 196.0
 margin_right = 450.0
-margin_bottom = 206.0
+margin_bottom = 210.0
 
 [node name="RoadLabel" type="Label" parent="MarginContainer/HBox/HBox"]
 margin_right = 85.0
@@ -64,9 +69,9 @@ text = "0/50"
 align = 2
 
 [node name="BuffsLabel" type="Label" parent="MarginContainer/HBox"]
-margin_top = 210.0
+margin_top = 214.0
 margin_right = 450.0
-margin_bottom = 224.0
+margin_bottom = 228.0
 
 [node name="BackToInn" type="Button" parent="."]
 margin_left = 364.0

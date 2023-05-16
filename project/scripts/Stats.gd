@@ -17,7 +17,11 @@ enum things {
 }
 
 enum actions {
-	TRAINEE
+	BREWER
+}
+
+var staff = {
+	actions.BREWER: 1
 }
 
 var has_rest := false

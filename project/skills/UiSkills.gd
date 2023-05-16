@@ -30,4 +30,4 @@ func skill_up(skill_name:int)->bool:
 	return skills.skill_up(skill_name)
 	
 func get_batch_sizes()->S.Batch:
-	return skills.get_batch_sizes()
+	return skills.get_batch_sizes() as S.Batch

@@ -49,7 +49,7 @@ theme/custom="res://resources/new_theme.tres"
 
 [locale]
 
-translations=PoolStringArray( "res://resources/rest_translations.en.translation", "res://resources/ale_translations.en.translation", "res://resources/potion_translations.en.translation" )
+translations=PoolStringArray( "res://resources/rest_translations.en.translation", "res://resources/ale_translations.en.translation", "res://resources/potion_translations.en.translation", "res://resources/office_translations.en.translation" )
 locale_filter=[ 0, [  ] ]
 
 [physics]

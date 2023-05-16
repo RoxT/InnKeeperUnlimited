@@ -85,7 +85,7 @@ func pass_time():
 		$today/Ale.text = "Ale drank: " + str(ale_drank)
 		adjust_children(ale_drank, $today/Ale/Pos, coin)
 		total_ale += ale_drank
-		$stock/ale.text = "Ale: " + str(ale)
+		
 		if !S.has_rest && ale > 30:
 			$DialogBtn.visible = true
 			emit_signal("event_happened", S.events.REST)
@@ -125,13 +125,17 @@ func pass_time():
 		hp -= 1
 		$stock/hp.text = "HP: " + str(hp)
 		
-	$buttons/ale.disabled = coins < 2 || (S.has_rest && hp <= 0)
-	$buttons/potion.disabled = coins < 2 || slimes <= 1 || hp <= 0
-	$stock/coins.text = "Coins: " + str(coins)
+	update_stock()
 	
 	print("average ale: " + str(round(total_ale/turns)) + " potions: " + str(round(total_potions/turns)) + " slimes: " + str(round(total_slimes/turns)) + " patrons_delta: " + str(patrons_delta) + " popularity: " + str(direction))
 	
 	emit_signal("time_passed")
+	
+func update_stock():
+	$buttons/ale.disabled = coins < 2 || (S.has_rest && hp <= 0)
+	$buttons/potion.disabled = coins < 2 || slimes <= 1 || hp <= 0
+	$stock/coins.text = "Coins: " + str(coins)
+	$stock/ale.text = "Ale: " + str(ale)
 
 func adjust_children(amt:int, node: Position2D, tex:Texture):
 	var current := node.get_child_count()
