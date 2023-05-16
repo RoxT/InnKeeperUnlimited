@@ -9,6 +9,17 @@ enum events {
 	END
 }
 
+enum things {
+	ALE,
+	POTIONS, 
+	REST,
+	COINS
+}
+
+enum actions {
+	TRAINEE
+}
+
 var has_rest := false
 var has_ale := false
 var has_slimes := false

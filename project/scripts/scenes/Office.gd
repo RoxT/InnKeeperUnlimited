@@ -1,7 +1,9 @@
 extends Node2D
 
-onready var road_score := $MarginContainer/HBoxContainer/HBoxContainer/RoadScore
-onready var no_ale_label := $MarginContainer/HBoxContainer/BuffsList/NoAleLabel
+onready var road_score := $MarginContainer/HBox/HBox/RoadScore
+onready var no_ale_label := $MarginContainer/HBox/BuffsList/NoAleLabel
+onready var list := $MarginContainer/HBox
+onready var TRAINEE_DIALOG := load("res://office/trainee_dialog.tscn")
 
 const NO_ALE := "Ale was out recently. Days left in Penalty: "
 
@@ -29,6 +31,5 @@ func init():
 #func _process(delta: float) -> void:
 #	pass
 
-
-func _on_Control_pressed() -> void:
-	pass # Replace with function body.
+func _on_TraineeAction_pressed() -> void:
+	pass

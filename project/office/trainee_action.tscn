@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://textures/arrow.png" type="Texture" id=1]
+[ext_resource path="res://textures/icon-trainee.png" type="Texture" id=2]
+[ext_resource path="res://resources/tinierBold.tres" type="DynamicFont" id=3]
+[ext_resource path="res://office/action_dialog.gd" type="Script" id=4]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+
+[node name="OfficeAction" type="Button" parent="."]
+margin_right = 224.0
+margin_bottom = 29.0
+toggle_mode = true
+text = "Train a new brewer"
+icon = ExtResource( 2 )
+
+[node name="Arrow" type="Sprite" parent="OfficeAction"]
+modulate = Color( 0.666667, 0, 1, 1 )
+position = Vector2( 419, 15 )
+scale = Vector2( 0.6, 0.269123 )
+texture = ExtResource( 1 )
+
+[node name="Dialog_VBox" type="VBoxContainer" parent="."]
+margin_top = 33.0
+margin_right = 224.0
+margin_bottom = 134.0
+
+[node name="Title" type="Label" parent="Dialog_VBox"]
+margin_right = 224.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 3 )
+text = "Train a new brewer"
+align = 1
+
+[node name="Larger" type="Label" parent="Dialog_VBox"]
+margin_top = 20.0
+margin_right = 224.0
+margin_bottom = 34.0
+text = "More batches per day"
+
+[node name="Amount" type="Label" parent="Dialog_VBox"]
+margin_top = 38.0
+margin_right = 224.0
+margin_bottom = 52.0
+text = "100 ales"
+
+[node name="Cost" type="Label" parent="Dialog_VBox"]
+margin_top = 56.0
+margin_right = 224.0
+margin_bottom = 70.0
+text = "Cost:"
+
+[node name="Options" type="HBoxContainer" parent="Dialog_VBox"]
+margin_top = 74.0
+margin_right = 224.0
+margin_bottom = 101.0
+
+[node name="Ale100Btn" type="Button" parent="Dialog_VBox/Options"]
+margin_right = 59.0447
+margin_bottom = 27.0
+text = "100 ale"
+
+[node name="Or" type="Label" parent="Dialog_VBox/Options"]
+margin_left = 63.0
+margin_top = 6.0
+margin_right = 76.0
+margin_bottom = 20.0
+text = "or"
+
+[node name="Coin100Btn" type="Button" parent="Dialog_VBox/Options"]
+margin_left = 80.0
+margin_right = 154.045
+margin_bottom = 27.0
+text = "100 coins"
+
+[connection signal="toggled" from="OfficeAction" to="." method="_on_OfficeAction_toggled"]
+[connection signal="pressed" from="Dialog_VBox/Options/Ale100Btn" to="OfficeAction" method="_on_Ale100Btn_pressed"]
+[connection signal="pressed" from="Dialog_VBox/Options/Coin100Btn" to="OfficeAction" method="_on_Coin100Btn_pressed"]
