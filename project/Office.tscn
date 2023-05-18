@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/scenes/Office.gd" type="Script" id=1]
 [ext_resource path="res://office/trainee_action.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/SaveGameR.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+coins = 200
+ale = 99
+slimes = 0
+potions = 0
+hp = 0
+patrons = 3
+turns = 0
 
 [node name="Office" type="Node2D"]
 script = ExtResource( 1 )
+save_game_override = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -28,7 +40,7 @@ align = 1
 margin_top = 18.0
 margin_right = 450.0
 margin_bottom = 32.0
-text = "Gossip About The Bar:"
+text = "Gossip Around The Bar:"
 
 [node name="BarGossip" type="VBoxContainer" parent="MarginContainer/HBox"]
 margin_top = 36.0
@@ -45,7 +57,7 @@ margin_right = 450.0
 margin_bottom = 14.0
 text = "No ale (fewer patrons)"
 
-[node name="OfficeAction" parent="MarginContainer/HBox" instance=ExtResource( 2 )]
+[node name="BrewerAction" parent="MarginContainer/HBox" instance=ExtResource( 2 )]
 margin_top = 58.0
 margin_right = 450.0
 margin_bottom = 192.0

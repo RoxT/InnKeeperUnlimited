@@ -31,6 +31,9 @@ func _button_toggled(button_pressed:bool):
 		arrow.flip_h = false
 		go_button.pressed = false
 
+func _exit_tree() -> void:
+	_button_toggled(false)
+
 func _on_Ale100Btn_pressed() -> void:
 	emit_signal("buy_action", 100, S.things.ALE, S.actions.BREWER)
 	game.ale -= 100

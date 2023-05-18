@@ -1,13 +1,14 @@
 extends Node2D
 
 var game:SaveGame
+export var save_game_override:Resource
 
 onready var road_score := $MarginContainer/HBox/HBox/RoadScore
 onready var no_ale_label := $MarginContainer/HBox/BuffsList/NoAleLabel
 onready var list := $MarginContainer/HBox
 onready var gossip_label := $MarginContainer/HBox/BarGossip
 
-onready var hire_action := $MarginContainer/HBox/OfficeAction
+onready var hire_action := $MarginContainer/HBox/BrewerAction
 
 const NO_ALE := "Ale was out recently. Days left in Penalty: "
 
@@ -19,7 +20,7 @@ signal back_to_inn
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	assert(game)
+	if not game: game = save_game_override if save_game_override else SaveGame.new_game()
 	init()
 	loaded = true
 	hire_action.connect("buy_action", self, "_on_buy_action")
