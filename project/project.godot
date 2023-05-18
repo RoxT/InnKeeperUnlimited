@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "SaveGame",
+"language": "GDScript",
+"path": "res://scripts/SaveGameR.gd"
+}, {
+"base": "Resource",
 "class": "Skill",
 "language": "GDScript",
 "path": "res://skills/RSkill.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://skills/RSkillSet.gd"
 } ]
 _global_script_class_icons={
+"SaveGame": "",
 "Skill": "",
 "SkillSet": ""
 }

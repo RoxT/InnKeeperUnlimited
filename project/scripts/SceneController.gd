@@ -8,13 +8,15 @@ onready var office := preload("res://Office.tscn").instance()
 var active_scene:Node
 var event_queue := [S.events.OPENING]
 
+var save_game:SaveGame
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	new_game()
 	var errs = []
 	errs.append(dialog.connect("dialog_finished", self, "_on_dialog_finished"))
 	errs.append(skills.connect("back_to_inn", self, "_on_back_to_inn"))
 	errs.append(office.connect("back_to_inn", self, "_on_back_to_inn"))
-	errs.append(office.connect("buy_action", self, "_on_buy_action"))
 	errs.append(inn.connect("made_ale", self, "_on_made_ale"))
 	errs.append(inn.connect("made_potions", self, "_on_made_potions"))
 	errs.append(inn.connect("rested", self, "_on_rested"))
@@ -22,9 +24,14 @@ func _ready() -> void:
 	errs.append(inn.connect("no_ale", self, "on_no_ale"))
 	errs.append(inn.connect("event_happened", self, "_on_event_happened"))
 	for err in errs:
-		if not OK:
-			push_error(err)
+		if err != OK:
+			push_error(str(err))
 	inn.batch = skills.get_batch_sizes()
+	inn.game = save_game
+	office.game = save_game
+	
+func new_game():
+ save_game = SaveGame.new_game()
 
 func _on_back_to_inn():
 	remove_child(active_scene)
@@ -74,16 +81,9 @@ func _on_dialog_finished(key:int):
 	S.update_visible(key)
 	add_child(inn)
 	
-func _on_buy_action(cost_amount, cost_type, action_type):
-	S.staff[action_type] += 1
-	if cost_type == S.things.COINS:
-		inn.coins -= cost_amount
-	elif cost_type == S.things.ALE:
-		inn.ale -= cost_amount
-	
 func _on_DialogBtn_pressed() -> void:
 	if event_queue[0] == S.events.REST:
-		inn.hp = 0
+		save_game.hp = 0
 		inn.get_node("buttons/ale").disabled = true
 	if event_queue.size() == 1:
 		inn.get_node("DialogBtn").visible = false
