@@ -3,10 +3,13 @@ extends Node2D
 var game:SaveGame
 export var save_game_override:Resource
 
+onready var PostScene := preload("res://office/slimes_wanted.tscn")
 onready var road_score := $MarginContainer/HBox/HBox/RoadScore
 onready var no_ale_label := $MarginContainer/HBox/BuffsList/NoAleLabel
 onready var list := $MarginContainer/HBox
 onready var gossip_label := $MarginContainer/HBox/BarGossip
+onready var billboard := $MarginContainer/HBox/Billboard
+onready var unposted := $MarginContainer/HBox/Unposted
 
 onready var hire_action := $MarginContainer/HBox/BrewerAction
 
@@ -37,22 +40,38 @@ func init():
 	no_ale_label.visible = S.ale_penalty > 0
 	no_ale_label.text = NO_ALE + str(S.ale_penalty)
 	update_gossip_labels()
+	
+	for c in billboard.get_children():
+		c.queue_free()
+	for c in unposted.get_children():
+		c.queue_free()
+	for k in S.postings.values():
+		var post := PostScene.instance()
+		post.post = k
+		post.connect("post_action", self, "_on_post_action")
+		if game.active_posts.has(k):
+			billboard.add_child(post)
+		else:
+			unposted.add_child(post)
+			
+func _on_post_action(is_active:bool, post):
+	add_gossip(post, 3, is_active)
 
-func _on_buy_action(cost_amount, cost_type, action_type):
+func _on_buy_action(_cost_amount, _cost_type, action_type):
 	if action_type == S.actions.BREWER:
-		update_gossip("NEW_BREWER")
+		add_gossip("NEW_BREWER")
 
 func pass_time():
 	for key in gossips.keys():
 		gossips[key] -= 1
 		if gossips[key] <= 0:
-			gossips.erase(key)
+			var _exists := gossips.erase(key)
 
-func update_gossip(key:String, days_left:=3, add:=true):
+func add_gossip(key:String, days_left:=3, add:=true):
 	if add:
 		gossips[key] = days_left
 	else:
-		gossips.erase(key)
+		var _exists := gossips.erase(key)
 	update_gossip_labels()	
 
 func update_gossip_labels():

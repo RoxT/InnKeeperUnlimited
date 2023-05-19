@@ -61,7 +61,7 @@ func pass_time():
 			if game.patrons <= S.road_quality: 
 				direction += 1
 		patrons_delta = round (rng.randfn(direction, 3))
-		game.patrons = max(game.patrons + game.patrons_delta, 0)
+		game.patrons = max(game.patrons + patrons_delta, 0)
 		$today/Patrons.text = "Patrons: " + str(game.patrons)
 
 	if S.has_ale:
@@ -149,9 +149,10 @@ func set_ready_to_level_up(b:bool):
 
 func _on_ale_pressed():
 	game.coins -= 2
-	game.ale += batch.ale
+	var made := batch.ale * game.brewers
+	game.ale += made
 	emit_signal("made_ale")
-	made_today.text = "Made " + str(batch.ale) + " ales"
+	made_today.text = "Made " + str(made) + " ales"
 	pass_time()
 
 func _on_potion_pressed():

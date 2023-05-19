@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://resources/tinierBold.tres" type="DynamicFont" id=2]
+[ext_resource path="res://textures/arrow.png" type="Texture" id=3]
+[ext_resource path="res://textures/icon-trainee.png" type="Texture" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -33,3 +36,80 @@ margin_right = 26.0
 margin_bottom = 125.0
 text = "I'm so long I'm a long text I'm so long I'm a long text"
 icon = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 12.0
+margin_top = 191.0
+margin_right = 236.0
+margin_bottom = 325.0
+
+[node name="OfficeAction" type="Button" parent="VBoxContainer"]
+margin_right = 224.0
+margin_bottom = 29.0
+toggle_mode = true
+text = "Train a new brewer"
+icon = ExtResource( 4 )
+
+[node name="Arrow" type="Sprite" parent="VBoxContainer/OfficeAction"]
+modulate = Color( 0.666667, 0, 1, 1 )
+position = Vector2( 419, 15 )
+scale = Vector2( 0.6, 0.269123 )
+texture = ExtResource( 3 )
+
+[node name="Dialog_VBox" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 33.0
+margin_right = 224.0
+margin_bottom = 142.0
+
+[node name="Title" type="Label" parent="VBoxContainer/Dialog_VBox"]
+margin_right = 224.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 2 )
+text = "Train a new brewer"
+align = 1
+
+[node name="Larger" type="Label" parent="VBoxContainer/Dialog_VBox"]
+margin_top = 20.0
+margin_right = 224.0
+margin_bottom = 34.0
+text = "Additional batch per day"
+
+[node name="Amount" type="Label" parent="VBoxContainer/Dialog_VBox"]
+margin_top = 38.0
+margin_right = 224.0
+margin_bottom = 52.0
+text = "100 ales"
+
+[node name="Cost" type="Label" parent="VBoxContainer/Dialog_VBox"]
+margin_top = 56.0
+margin_right = 224.0
+margin_bottom = 70.0
+text = "Cost:"
+
+[node name="Options" type="HBoxContainer" parent="VBoxContainer/Dialog_VBox"]
+margin_top = 74.0
+margin_right = 224.0
+margin_bottom = 101.0
+
+[node name="Ale100Btn" type="Button" parent="VBoxContainer/Dialog_VBox/Options"]
+margin_right = 59.0447
+margin_bottom = 27.0
+text = "100 ale"
+
+[node name="Or" type="Label" parent="VBoxContainer/Dialog_VBox/Options"]
+margin_left = 63.0
+margin_top = 6.0
+margin_right = 76.0
+margin_bottom = 20.0
+text = "or"
+
+[node name="Coin100Btn" type="Button" parent="VBoxContainer/Dialog_VBox/Options"]
+margin_left = 80.0
+margin_right = 154.045
+margin_bottom = 27.0
+text = "100 coins"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Dialog_VBox"]
+margin_top = 105.0
+margin_right = 224.0
+margin_bottom = 109.0

@@ -15,7 +15,8 @@ onready var level_up_btn := $VBox/LevelUpBtn
 func _ready() -> void:
 	assert(skill_r != null)
 	skill = skill_r
-	level_up_btn.connect("pressed", self, "_on_level_up_btn_pressed")
+	var err := level_up_btn.connect("pressed", self, "_on_level_up_btn_pressed")
+	if err != OK: push_error(str(err))
 	title_label.owner = self
 	batch_label.owner = self
 	progress.owner = self

@@ -37,12 +37,14 @@ func _exit_tree() -> void:
 func _on_Ale100Btn_pressed() -> void:
 	emit_signal("buy_action", 100, S.things.ALE, S.actions.BREWER)
 	game.ale -= 100
+	game.brewers += 1
 	_button_toggled(false)
 
 
 func _on_Coin100Btn_pressed() -> void:
 	emit_signal("buy_action", 100, S.things.COINS, S.actions.BREWER)
 	game.coins -= 100
+	game.brewers += 1
 	_button_toggled(false)
 
 

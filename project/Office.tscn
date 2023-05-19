@@ -13,6 +13,8 @@ potions = 0
 hp = 0
 patrons = 3
 turns = 0
+brewers = 1
+active_posts = [ 1 ]
 
 [node name="Office" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,6 +31,7 @@ margin_left = 15.0
 margin_top = 15.0
 margin_right = 465.0
 margin_bottom = 707.0
+custom_constants/separation = 8
 
 [node name="Title" type="Label" parent="MarginContainer/HBox"]
 margin_right = 450.0
@@ -37,20 +40,20 @@ text = "Office"
 align = 1
 
 [node name="GossipLabel" type="Label" parent="MarginContainer/HBox"]
-margin_top = 18.0
+margin_top = 22.0
 margin_right = 450.0
-margin_bottom = 32.0
+margin_bottom = 36.0
 text = "Gossip Around The Bar:"
 
 [node name="BarGossip" type="VBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 36.0
+margin_top = 44.0
 margin_right = 450.0
-margin_bottom = 36.0
+margin_bottom = 44.0
 
 [node name="BuffsList" type="VBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 40.0
+margin_top = 52.0
 margin_right = 450.0
-margin_bottom = 54.0
+margin_bottom = 66.0
 
 [node name="NoAleLabel" type="Label" parent="MarginContainer/HBox/BuffsList"]
 margin_right = 450.0
@@ -58,14 +61,14 @@ margin_bottom = 14.0
 text = "No ale (fewer patrons)"
 
 [node name="BrewerAction" parent="MarginContainer/HBox" instance=ExtResource( 2 )]
-margin_top = 58.0
+margin_top = 74.0
 margin_right = 450.0
-margin_bottom = 192.0
+margin_bottom = 207.0
 
 [node name="HBox" type="HBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 196.0
+margin_top = 215.0
 margin_right = 450.0
-margin_bottom = 210.0
+margin_bottom = 229.0
 
 [node name="RoadLabel" type="Label" parent="MarginContainer/HBox/HBox"]
 margin_right = 85.0
@@ -81,9 +84,33 @@ text = "0/50"
 align = 2
 
 [node name="BuffsLabel" type="Label" parent="MarginContainer/HBox"]
-margin_top = 214.0
+margin_top = 237.0
 margin_right = 450.0
-margin_bottom = 228.0
+margin_bottom = 251.0
+
+[node name="TitleB" type="Label" parent="MarginContainer/HBox"]
+margin_top = 259.0
+margin_right = 450.0
+margin_bottom = 273.0
+text = "Billboard Postings"
+align = 1
+
+[node name="Billboard" type="VBoxContainer" parent="MarginContainer/HBox"]
+margin_top = 281.0
+margin_right = 450.0
+margin_bottom = 281.0
+
+[node name="TitleP" type="Label" parent="MarginContainer/HBox"]
+margin_top = 289.0
+margin_right = 450.0
+margin_bottom = 303.0
+text = "Add Posting"
+align = 1
+
+[node name="Unposted" type="VBoxContainer" parent="MarginContainer/HBox"]
+margin_top = 311.0
+margin_right = 450.0
+margin_bottom = 311.0
 
 [node name="BackToInn" type="Button" parent="."]
 margin_left = 364.0

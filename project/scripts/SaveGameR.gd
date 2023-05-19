@@ -14,6 +14,9 @@ export var potions = 0
 export var hp := 0
 export var patrons := 3
 export var turns := 0 setget set_turns
+export var brewers := 1
+
+export var active_posts := []
 
 static func new_game():
 	return load("res://resources/new_game.tres").duplicate()

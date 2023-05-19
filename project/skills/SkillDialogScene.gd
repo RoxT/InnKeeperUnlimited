@@ -1,13 +1,8 @@
 extends Control
 
-
-var skill:String
 var level:int
 
 onready var label:RichTextLabel = $MarginContainer/VBoxContainer/RichTextLabelTiny
-
-
-signal dialog_finished (key)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

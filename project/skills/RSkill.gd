@@ -24,23 +24,21 @@ func is_ready()->bool:
 		return true
 	else: return false
 
-func level_up()->int:
+func level_up():
 	level += 1
 	ex = ex - next
 	next += 1
 	batch_size += 1
-	return level
 
 func get_batch_text()->String:
 	return BATCH % [batch_size, plural]
-
-
 
 func get_filepath()->String:
 	return PROD_SAVE_PATH % title.replace(" ", "_")
 
 func write_skill() -> void:
-	ResourceSaver.save(get_filepath(), self)
+	var err := ResourceSaver.save(get_filepath(), self)
+	if err != OK: push_error(str(err))
 
 func load_skill() -> Resource:
 	if ResourceLoader.exists(get_filepath()):

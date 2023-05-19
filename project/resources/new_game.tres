@@ -11,3 +11,5 @@ potions = 0
 hp = 0
 patrons = 3
 turns = 0
+brewers = 1
+active_posts = [  ]

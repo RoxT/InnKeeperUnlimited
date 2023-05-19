@@ -20,6 +20,11 @@ enum actions {
 	BREWER
 }
 
+enum postings {
+	SLIMES_WANTED,
+	ESCORTS_WANTED
+}
+
 var staff = {
 	actions.BREWER: 1
 }
