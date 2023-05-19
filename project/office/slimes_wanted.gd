@@ -18,7 +18,7 @@ const DESC = "desc"
 
 var posts := {
 	S.postings.SLIMES_WANTED: {TITLE: "Slimes Wanted - 2 coins each", DESC: "Slimes killed and brought in, increasing road safety"},
-	S.postings.ESCORTS_WANTED: {TITLE: "Escorts Wanted - 20 coins per day", DESC: "Greatly increases road saftey while active"}
+	S.postings.ESCORTS_WANTED: {TITLE: "Escorts Wanted - 20 coins per day", DESC: "Greatly increased road saftey while active"}
 	
 }
 
@@ -28,20 +28,26 @@ signal post_action (is_active, post)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not game: game = save_game_override if save_game_override else SaveGame.new_game()
+	if get_parent().name == "root":
+		game = save_game_override if save_game_override else SaveGame.new_game()
+	assert(game) 
 	_button_toggled(false)
-	take_down.connect("pressed", self, "_on_TakeDown_pressed")
-	post_button.connect("pressed", self, "_on_post_pressed")
+	var errs := []
+	errs.append(take_down.connect("pressed", self, "_on_TakeDown_pressed"))
+	errs.append(post_button.connect("pressed", self, "_on_post_pressed"))
+	for err in errs:
+		if err != OK: push_error("Error connecting: " + str(err))
 	go_button.text = posts[post].title
 	title.text = posts[post].title
 	desc.text = posts[post].desc
 	loaded = true
+	init()
 	
 func _enter_tree() -> void:
 	if loaded: init()
 	
 func init():
-	if game.active_posts.find(post):
+	if game.active_posts.has(post):
 		post_button.hide()
 		take_down.show()
 	else:
@@ -49,14 +55,14 @@ func init():
 		post_button.show()
 
 func _on_post_pressed():
-	game.active_posts.erase(post)
-	_button_toggled(false)
-	emit_signal("post_action", true, S.postings.get(post))
-		
-func _on_TakeDown_pressed():
 	game.active_posts.append(post)
 	_button_toggled(false)
-	emit_signal("post_action", false, S.postings.get(post))
+	emit_signal("post_action", true, S.postings.keys()[post])
+		
+func _on_TakeDown_pressed():
+	game.active_posts.erase(post)
+	_button_toggled(false)
+	emit_signal("post_action", false, S.postings.keys()[post])
 		
 	
 func set_post(value:int):

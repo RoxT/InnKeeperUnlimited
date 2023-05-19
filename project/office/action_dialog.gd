@@ -40,7 +40,6 @@ func _on_Ale100Btn_pressed() -> void:
 	game.brewers += 1
 	_button_toggled(false)
 
-
 func _on_Coin100Btn_pressed() -> void:
 	emit_signal("buy_action", 100, S.things.COINS, S.actions.BREWER)
 	game.coins -= 100
