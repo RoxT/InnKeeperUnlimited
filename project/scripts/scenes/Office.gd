@@ -3,7 +3,6 @@ extends Node2D
 var game:SaveGame
 export var save_game_override:Resource
 
-onready var PostScene := preload("res://office/slimes_wanted.tscn")
 onready var road_score := $MarginContainer/HBox/HBox/RoadScore
 onready var no_ale_label := $MarginContainer/HBox/BuffsList/NoAleLabel
 onready var list := $MarginContainer/HBox

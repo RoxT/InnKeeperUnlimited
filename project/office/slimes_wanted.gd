@@ -16,7 +16,7 @@ onready var desc := $Dialog_VBox/Desc
 const TITLE = "title"
 const DESC = "desc"
 
-var posts := {
+const posts := {
 	S.postings.SLIMES_WANTED: {TITLE: "Slimes Wanted - 2 coins each", DESC: "Slimes killed and brought in, increasing road safety"},
 	S.postings.ESCORTS_WANTED: {TITLE: "Escorts Wanted - 20 coins per day", DESC: "Greatly increased road saftey while active"}
 	

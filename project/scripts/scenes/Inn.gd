@@ -101,8 +101,12 @@ func pass_time():
 			emit_signal("event_happened", S.events.END)
 
 	if S.has_slimes:
-		#Random int of slimes returned most likely a quarter of the number of patrons, min 0
-		slimes_brought = clamp(round (rng.randfn(round(game.patrons/4.0), 3)), 0, game.coins/2)
+		# Random int of slimes returned most likely a quarter of the number of patrons
+		# min 0. max by coins
+		# multiplied by pop factor
+		slimes_brought = game.patrons/4.0
+		slimes_brought = round(rng.randfn(slimes_brought, 3) * game.slime_density)
+		slimes_brought = clamp(slimes_brought, 0, game.coins/2)
 		game.coins -= slimes_brought*2
 		game.slimes += slimes_brought
 		$today/Slimes.text = "Slimes returned: " + str(slimes_brought)
@@ -110,6 +114,7 @@ func pass_time():
 		adjust_children(slimes_brought, $today/Slimes/Pos_Slimes, slime)
 		total_slimes += slimes_brought
 		S.road_quality = min(S.road_quality + slimes_brought, 25)
+		game.slime_density += 0.05
 		$stock/slimes.text = "Slimes: " + str(game.slimes)
 		if !S.has_potions && game.slimes > 70 && game.patrons >= 30:
 			$DialogBtn.visible = true
