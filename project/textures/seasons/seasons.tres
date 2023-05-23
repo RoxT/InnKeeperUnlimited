@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=10 format=2]
+
+[ext_resource path="res://textures/seasons/erbario-00005.jpeg" type="Texture" id=1]
+[ext_resource path="res://textures/seasons/erbario-00028.jpeg" type="Texture" id=2]
+[ext_resource path="res://textures/seasons/erbario-00021.jpeg" type="Texture" id=3]
+[ext_resource path="res://textures/seasons/erbario-00056.jpeg" type="Texture" id=4]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 700, 904 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 600, 546 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 600, 864 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 600, 687 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 525, 546 )
+
+[resource]
+FALL/base_type = "Panel"
+FALL/styles/panel = SubResource( 3 )
+Panel/styles/panel = SubResource( 2 )
+SPRING/base_type = "Panel"
+SPRING/styles/panel = SubResource( 4 )
+SUMMER/base_type = "Panel"
+SUMMER/styles/panel = SubResource( 6 )
+WINTER/base_type = "Panel"
+WINTER/styles/panel = SubResource( 5 )

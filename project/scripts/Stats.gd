@@ -25,6 +25,13 @@ enum postings {
 	ESCORTS_WANTED
 }
 
+enum seasons {
+	WINTER,
+	SPRING,
+	FALL
+	SUMMER
+}
+
 var staff = {
 	actions.BREWER: 1
 }

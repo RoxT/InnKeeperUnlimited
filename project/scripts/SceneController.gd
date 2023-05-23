@@ -1,6 +1,7 @@
 extends Node
 
 onready var inn := $Inn
+onready var season := $Season
 onready var dialog:Node =  preload("res://DialogScene.tscn").instance()
 onready var skills := preload("res://skills/UISkills.tscn").instance()
 onready var office := preload("res://Office.tscn").instance()
@@ -28,6 +29,7 @@ func _ready() -> void:
 			push_error(str(err))
 	inn.batch = skills.get_batch_sizes()
 	inn.game = save_game
+	inn.update_stock()
 	office.game = save_game
 	
 func new_game():
@@ -57,6 +59,12 @@ func _on_rested():
 func _on_time_passed():
 	if S.ale_penalty > 0: S.ale_penalty -= 1
 	office.pass_time()
+	
+	var date := save_game.DATE.new(save_game.turns)
+	if date.day == 1:
+		season.get_node("Panel").theme_type_variation = date.get_season_label()
+		season.get_node("Label").text = tr(date.get_season_label())
+		season.get_node("SeasonPlayer").play("wipe")
 	
 func on_no_ale():
 	S.ale_penalty = 10

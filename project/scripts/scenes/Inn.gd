@@ -135,6 +135,9 @@ func update_stock():
 	$buttons/potion.disabled = game.coins < 2 || game.slimes <= 1 || game.hp <= 0
 	$stock/coins.text = "Coins: " + str(game.coins)
 	$stock/ale.text = "Ale: " + str(game.ale)
+	var date := game.DATE.new(game.turns)
+	$Date.text = date.get_date_string()
+	$Date/Sprite.frame = date.season
 
 func adjust_children(amt:int, node: Position2D, tex:Texture):
 	var current := node.get_child_count()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/SceneController.gd" type="Script" id=1]
 [ext_resource path="res://scripts/scenes/Inn.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://textures/ale.png" type="Texture" id=8]
 [ext_resource path="res://textures/button_anim2.png" type="Texture" id=9]
 [ext_resource path="res://textures/button_anim1.png" type="Texture" id=10]
+[ext_resource path="res://textures/fourxfour.png" type="Texture" id=11]
+[ext_resource path="res://resources/header.tres" type="Theme" id=12]
+[ext_resource path="res://textures/seasons/seasons.tres" type="Theme" id=13]
 
 [sub_resource type="AnimatedTexture" id=1]
 flags = 4
@@ -18,6 +21,46 @@ fps = 2.0
 frame_0/texture = ExtResource( 10 )
 frame_1/texture = ExtResource( 9 )
 frame_1/delay_sec = 0.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "wipe"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 3.86375, 0.170755, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="SceneController" type="Node"]
 script = ExtResource( 1 )
@@ -207,6 +250,40 @@ margin_bottom = 181.0
 texture_normal = SubResource( 1 )
 expand = true
 stretch_mode = 4
+
+[node name="Date" type="Label" parent="Inn"]
+margin_left = 35.0
+margin_top = 10.0
+margin_right = 130.0
+margin_bottom = 18.0
+text = "10th of Summer"
+
+[node name="Sprite" type="Sprite" parent="Inn/Date"]
+position = Vector2( -4, 2 )
+texture = ExtResource( 11 )
+hframes = 4
+vframes = 4
+frame = 3
+
+[node name="Season" type="CanvasLayer" parent="."]
+layer = 100
+visible = false
+
+[node name="Panel" type="Panel" parent="Season"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="Season"]
+margin_left = 202.0
+margin_top = 75.0
+margin_right = 284.0
+margin_bottom = 91.0
+theme = ExtResource( 12 )
+text = "Summer"
+
+[node name="SeasonPlayer" type="AnimationPlayer" parent="Season"]
+anims/wipe = SubResource( 2 )
 
 [connection signal="pressed" from="Inn/buttons/ale" to="Inn" method="_on_ale_pressed"]
 [connection signal="pressed" from="Inn/buttons/potion" to="Inn" method="_on_potion_pressed"]
