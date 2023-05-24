@@ -12,8 +12,9 @@ margin_bottom = 40.0
 script = ExtResource( 4 )
 
 [node name="OfficeAction" type="Button" parent="."]
-margin_right = 344.0
-margin_bottom = 29.0
+margin_right = 308.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
 toggle_mode = true
 text = "Slimes wanted - 2 coins each"
 icon = ExtResource( 2 )
@@ -25,9 +26,9 @@ scale = Vector2( 0.6, 0.269123 )
 texture = ExtResource( 1 )
 
 [node name="Dialog_VBox" type="VBoxContainer" parent="."]
-margin_top = 33.0
+margin_top = 40.0
 margin_right = 344.0
-margin_bottom = 113.0
+margin_bottom = 144.0
 
 [node name="Title" type="Label" parent="Dialog_VBox"]
 margin_right = 344.0
@@ -39,30 +40,31 @@ text = "Slimes Wanted - 2 coins each"
 [node name="Desc" type="Label" parent="Dialog_VBox"]
 margin_top = 22.0
 margin_right = 344.0
-margin_bottom = 38.0
+margin_bottom = 55.0
 theme = ExtResource( 6 )
 text = "Slimes brought in, increasing road safety"
+autowrap = true
 
 [node name="Options" type="HBoxContainer" parent="Dialog_VBox"]
-margin_top = 42.0
+margin_top = 59.0
 margin_right = 344.0
-margin_bottom = 69.0
+margin_bottom = 93.0
 
 [node name="TakeDown" type="Button" parent="Dialog_VBox/Options"]
-margin_right = 81.0447
-margin_bottom = 27.0
+margin_right = 118.0
+margin_bottom = 34.0
 text = "Take Down"
 
 [node name="Post" type="Button" parent="Dialog_VBox/Options"]
-margin_left = 85.0
-margin_right = 125.045
-margin_bottom = 27.0
+margin_left = 122.0
+margin_right = 181.0
+margin_bottom = 34.0
 text = "Post"
 
 [node name="HSeparator" type="HSeparator" parent="Dialog_VBox"]
-margin_top = 73.0
+margin_top = 97.0
 margin_right = 344.0
-margin_bottom = 80.0
+margin_bottom = 104.0
 custom_constants/separation = 7
 
 [connection signal="toggled" from="OfficeAction" to="." method="_on_OfficeAction_toggled"]

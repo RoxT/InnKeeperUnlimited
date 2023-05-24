@@ -1,22 +1,62 @@
-[gd_resource type="Theme" load_steps=4 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
-[ext_resource path="res://textures/button.png" type="Texture" id=1]
+[ext_resource path="res://textures/btn-disabled.png" type="Texture" id=1]
+[ext_resource path="res://textures/btn-hover.png" type="Texture" id=2]
+[ext_resource path="res://textures/btn-focus.png" type="Texture" id=3]
+[ext_resource path="res://textures/btn-normal.png" type="Texture" id=4]
+[ext_resource path="res://textures/btn-pressed.png" type="Texture" id=5]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0.712349, 200, 99.2877 )
-margin_left = 6.0
-margin_right = 6.04467
-margin_top = 6.0
-margin_bottom = 7.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
+region_rect = Rect2( 0, 0, 200, 100 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 200, 100 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 200, 100 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 200, 100 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 200, 100 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0235294, 0.27451, 0.180392, 1 )
 
 [resource]
-Button/styles/normal = SubResource( 1 )
+Button/colors/font_color_disabled = Color( 0.901961, 0.901961, 0.901961, 0.454902 )
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 3 )
+Button/styles/focus = SubResource( 4 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 6 )
+Button/styles/pressed = SubResource( 7 )
 MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 15
 MarginContainer/constants/margin_right = 15

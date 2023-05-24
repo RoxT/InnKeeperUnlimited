@@ -54,6 +54,7 @@ func init():
 	if gossips.empty():
 		var l := Label.new()
 		l.text = tr( "RANDOM" + str(randi()%4) )
+		l.autowrap = true
 		gossip_label.add_child(l)
 	else:
 		for g in gossips.keys():

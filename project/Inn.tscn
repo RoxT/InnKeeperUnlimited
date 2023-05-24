@@ -83,11 +83,11 @@ text = "Make ale"
 icon = ExtResource( 8 )
 
 [node name="Coin" type="Sprite" parent="Inn/buttons/ale"]
-position = Vector2( 108, 10 )
+position = Vector2( 126, 15 )
 texture = ExtResource( 6 )
 
 [node name="Coin2" type="Sprite" parent="Inn/buttons/ale"]
-position = Vector2( 128, 10 )
+position = Vector2( 146, 15 )
 texture = ExtResource( 6 )
 
 [node name="potion" type="Button" parent="Inn/buttons"]
@@ -99,15 +99,15 @@ text = "Make potions"
 icon = ExtResource( 4 )
 
 [node name="Coin3" type="Sprite" parent="Inn/buttons/potion"]
-position = Vector2( 129, 12 )
+position = Vector2( 163, 16 )
 texture = ExtResource( 6 )
 
 [node name="Coin4" type="Sprite" parent="Inn/buttons/potion"]
-position = Vector2( 150, 12 )
+position = Vector2( 184, 16 )
 texture = ExtResource( 6 )
 
 [node name="Slime" type="Sprite" parent="Inn/buttons/potion"]
-position = Vector2( 191, 11 )
+position = Vector2( 225, 15 )
 texture = ExtResource( 5 )
 
 [node name="rest" type="Button" parent="Inn/buttons"]

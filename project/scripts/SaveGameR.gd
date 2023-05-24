@@ -40,7 +40,7 @@ class DATE:
 	var season:int
 	var day:int
 	var year:int
-	const DAYS_PER_SEASON := 10
+	const DAYS_PER_SEASON := 30
 	func _init(turn:int):
 		var date = turn % 40 + 1
 		if date <= 10:

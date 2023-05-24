@@ -45,7 +45,7 @@ margin_bottom = 325.0
 
 [node name="OfficeAction" type="Button" parent="VBoxContainer"]
 margin_right = 224.0
-margin_bottom = 29.0
+margin_bottom = 16.0
 toggle_mode = true
 text = "Train a new brewer"
 icon = ExtResource( 4 )
@@ -57,9 +57,9 @@ scale = Vector2( 0.6, 0.269123 )
 texture = ExtResource( 3 )
 
 [node name="Dialog_VBox" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 33.0
+margin_top = 20.0
 margin_right = 224.0
-margin_bottom = 142.0
+margin_bottom = 116.0
 
 [node name="Title" type="Label" parent="VBoxContainer/Dialog_VBox"]
 margin_right = 224.0
@@ -89,27 +89,45 @@ text = "Cost:"
 [node name="Options" type="HBoxContainer" parent="VBoxContainer/Dialog_VBox"]
 margin_top = 74.0
 margin_right = 224.0
-margin_bottom = 101.0
+margin_bottom = 88.0
 
 [node name="Ale100Btn" type="Button" parent="VBoxContainer/Dialog_VBox/Options"]
-margin_right = 59.0447
-margin_bottom = 27.0
+margin_right = 61.0
+margin_bottom = 14.0
 text = "100 ale"
 
 [node name="Or" type="Label" parent="VBoxContainer/Dialog_VBox/Options"]
-margin_left = 63.0
-margin_top = 6.0
-margin_right = 76.0
-margin_bottom = 20.0
+margin_left = 65.0
+margin_right = 83.0
+margin_bottom = 14.0
 text = "or"
 
 [node name="Coin100Btn" type="Button" parent="VBoxContainer/Dialog_VBox/Options"]
-margin_left = 80.0
-margin_right = 154.045
-margin_bottom = 27.0
+margin_left = 87.0
+margin_right = 168.0
+margin_bottom = 14.0
 text = "100 coins"
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/Dialog_VBox"]
-margin_top = 105.0
+margin_top = 92.0
 margin_right = 224.0
-margin_bottom = 109.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 14.0
+margin_top = 347.0
+margin_right = 190.0
+margin_bottom = 446.0
+text = " !\"#$%&'()*+,-./
+0123456789:;<=>?
+@ABCDEFGHIJKLMNO
+PQRSTUVWXYZ[\\]^_
+`abcdefghijklmno
+pqrstuvwxyz{|}~∎"
+
+[node name="Button5" type="Button" parent="."]
+margin_left = 99.0
+margin_top = 507.0
+margin_right = 168.0
+margin_bottom = 521.0
+text = "New Button"
