@@ -72,20 +72,20 @@ margin_right = 415.0
 margin_bottom = 96.0
 
 [node name="Ale100Btn" type="Button" parent="Dialog_VBox/Options"]
-margin_right = 81.0
+margin_right = 97.0
 margin_bottom = 34.0
-text = "100 ale"
+text = "{100 ale}"
 
 [node name="Or" type="Label" parent="Dialog_VBox/Options"]
-margin_left = 85.0
+margin_left = 101.0
 margin_top = 10.0
-margin_right = 103.0
+margin_right = 119.0
 margin_bottom = 24.0
 text = "or"
 
 [node name="Coin100Btn" type="Button" parent="Dialog_VBox/Options"]
-margin_left = 107.0
-margin_right = 208.0
+margin_left = 123.0
+margin_right = 224.0
 margin_bottom = 34.0
 text = "100 coins"
 

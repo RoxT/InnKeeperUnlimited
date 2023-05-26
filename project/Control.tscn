@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://resources/tinierBold.tres" type="DynamicFont" id=2]
 [ext_resource path="res://textures/arrow.png" type="Texture" id=3]
 [ext_resource path="res://textures/icon-trainee.png" type="Texture" id=4]
+[ext_resource path="res://textures/test/test10.png" type="Texture" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -45,10 +46,11 @@ margin_bottom = 325.0
 
 [node name="OfficeAction" type="Button" parent="VBoxContainer"]
 margin_right = 224.0
-margin_bottom = 16.0
+margin_bottom = 34.0
 toggle_mode = true
 text = "Train a new brewer"
 icon = ExtResource( 4 )
+expand_icon = true
 
 [node name="Arrow" type="Sprite" parent="VBoxContainer/OfficeAction"]
 modulate = Color( 0.666667, 0, 1, 1 )
@@ -57,9 +59,9 @@ scale = Vector2( 0.6, 0.269123 )
 texture = ExtResource( 3 )
 
 [node name="Dialog_VBox" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 20.0
+margin_top = 38.0
 margin_right = 224.0
-margin_bottom = 116.0
+margin_bottom = 154.0
 
 [node name="Title" type="Label" parent="VBoxContainer/Dialog_VBox"]
 margin_right = 224.0
@@ -89,29 +91,30 @@ text = "Cost:"
 [node name="Options" type="HBoxContainer" parent="VBoxContainer/Dialog_VBox"]
 margin_top = 74.0
 margin_right = 224.0
-margin_bottom = 88.0
+margin_bottom = 108.0
 
 [node name="Ale100Btn" type="Button" parent="VBoxContainer/Dialog_VBox/Options"]
-margin_right = 61.0
-margin_bottom = 14.0
+margin_right = 81.0
+margin_bottom = 34.0
 text = "100 ale"
 
 [node name="Or" type="Label" parent="VBoxContainer/Dialog_VBox/Options"]
-margin_left = 65.0
-margin_right = 83.0
-margin_bottom = 14.0
+margin_left = 85.0
+margin_top = 10.0
+margin_right = 103.0
+margin_bottom = 24.0
 text = "or"
 
 [node name="Coin100Btn" type="Button" parent="VBoxContainer/Dialog_VBox/Options"]
-margin_left = 87.0
-margin_right = 168.0
-margin_bottom = 14.0
+margin_left = 107.0
+margin_right = 208.0
+margin_bottom = 34.0
 text = "100 coins"
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/Dialog_VBox"]
-margin_top = 92.0
+margin_top = 112.0
 margin_right = 224.0
-margin_bottom = 96.0
+margin_bottom = 116.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 14.0
@@ -126,8 +129,10 @@ PQRSTUVWXYZ[\\]^_
 pqrstuvwxyz{|}~∎"
 
 [node name="Button5" type="Button" parent="."]
-margin_left = 99.0
-margin_top = 507.0
-margin_right = 168.0
-margin_bottom = 521.0
+margin_left = 236.0
+margin_top = 193.0
+margin_right = 373.0
+margin_bottom = 227.0
 text = "New Button"
+icon = ExtResource( 5 )
+expand_icon = true
