@@ -65,6 +65,11 @@ func _on_time_passed():
 		season.get_node("Panel").theme_type_variation = date.get_season_label()
 		season.get_node("Label").text = tr(date.get_season_label())
 		season.get_node("SeasonPlayer").play("wipe")
+	else:
+		for f in S.festivals[date.season]:
+			if date.day == f.day:
+				#show festival proceeds
+				pass
 	
 func on_no_ale():
 	S.ale_penalty = 10

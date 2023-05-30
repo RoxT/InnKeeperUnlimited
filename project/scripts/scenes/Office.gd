@@ -61,7 +61,7 @@ func init():
 			var l := Label.new()
 			l.text = tr(g)
 			gossip_label.add_child(l)
-			
+
 func _on_post_action(is_active:bool, post_const:String):
 	add_gossip(post_const, is_active)
 
