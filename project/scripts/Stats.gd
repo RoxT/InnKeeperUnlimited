@@ -54,31 +54,6 @@ class Batch:
 		potion = potion_n
 		rest = rest_n
 
-var festivals = {
-	seasons.WINTER: [
-		festival.new("Gladiator Games", 15, {things.ALE: 2, things.POTIONS: 2})
-	],
-	seasons.SPRING: [
-		festival.new("Gladiator Games", 15, {things.ALE: 2, things.POTIONS: 2})
-	],
-	seasons.SUMMER: [
-		festival.new("Gladiator Games", 15, {things.ALE: 2, things.POTIONS: 2})
-	],
-	seasons.FALL: [
-		festival.new("Gladiator Games", 15, {things.ALE: 2, things.POTIONS: 2})
-	],
-}
-
-class festival:
-	var title:String
-	var day:int
-	var supplies:Dictionary
-	
-	func _init(new_title, new_day, new_supplies):
-		title=new_title
-		day=new_day
-		supplies=new_supplies
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

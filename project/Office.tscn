@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/scenes/Office.gd" type="Script" id=1]
 [ext_resource path="res://office/trainee_action.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/SaveGameR.gd" type="Script" id=3]
 [ext_resource path="res://office/Billboard.gd" type="Script" id=4]
+[ext_resource path="res://office/Festivals.gd" type="Script" id=5]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
@@ -29,46 +30,48 @@ margin_right = 480.0
 margin_bottom = 722.0
 
 [node name="HBox" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 480.0
-margin_bottom = 722.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 465.0
+margin_bottom = 707.0
 custom_constants/separation = 8
 
 [node name="Title" type="Label" parent="MarginContainer/HBox"]
-margin_right = 480.0
+margin_right = 450.0
 margin_bottom = 14.0
 text = "Office"
 align = 1
 
 [node name="GossipLabel" type="Label" parent="MarginContainer/HBox"]
 margin_top = 22.0
-margin_right = 480.0
+margin_right = 450.0
 margin_bottom = 36.0
 text = "Gossip Around The Bar:"
 
 [node name="BarGossip" type="VBoxContainer" parent="MarginContainer/HBox"]
 margin_top = 44.0
-margin_right = 480.0
+margin_right = 450.0
 margin_bottom = 44.0
 
 [node name="BuffsList" type="VBoxContainer" parent="MarginContainer/HBox"]
 margin_top = 52.0
-margin_right = 480.0
+margin_right = 450.0
 margin_bottom = 66.0
 
 [node name="NoAleLabel" type="Label" parent="MarginContainer/HBox/BuffsList"]
-margin_right = 480.0
+margin_right = 450.0
 margin_bottom = 14.0
 text = "No ale (fewer patrons)"
 
 [node name="BrewerAction" parent="MarginContainer/HBox" instance=ExtResource( 2 )]
 margin_top = 74.0
-margin_right = 480.0
-margin_bottom = 193.0
+margin_right = 450.0
+margin_bottom = 221.0
 
 [node name="HBox" type="HBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 201.0
-margin_right = 480.0
-margin_bottom = 215.0
+margin_top = 229.0
+margin_right = 450.0
+margin_bottom = 243.0
 
 [node name="RoadLabel" type="Label" parent="MarginContainer/HBox/HBox"]
 margin_right = 119.0
@@ -77,51 +80,52 @@ text = "Road Quality "
 
 [node name="RoadScore" type="Label" parent="MarginContainer/HBox/HBox"]
 margin_left = 123.0
-margin_right = 480.0
+margin_right = 450.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "0/50"
 align = 2
 
 [node name="Festivals" type="VBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 223.0
-margin_right = 480.0
-margin_bottom = 237.0
+margin_top = 251.0
+margin_right = 450.0
+margin_bottom = 265.0
+script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="MarginContainer/HBox/Festivals"]
-margin_right = 480.0
+margin_right = 450.0
 margin_bottom = 14.0
 text = "Upcoming Festivals"
 
 [node name="BuffsLabel" type="Label" parent="MarginContainer/HBox"]
-margin_top = 245.0
-margin_right = 480.0
-margin_bottom = 259.0
+margin_top = 273.0
+margin_right = 450.0
+margin_bottom = 287.0
 
 [node name="TitleB" type="Label" parent="MarginContainer/HBox"]
-margin_top = 267.0
-margin_right = 480.0
-margin_bottom = 281.0
+margin_top = 295.0
+margin_right = 450.0
+margin_bottom = 309.0
 text = "Billboard Posts"
 align = 1
 
 [node name="Posted" type="VBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 289.0
-margin_right = 480.0
-margin_bottom = 289.0
+margin_top = 317.0
+margin_right = 450.0
+margin_bottom = 317.0
 script = ExtResource( 4 )
 
 [node name="TitleP" type="Label" parent="MarginContainer/HBox"]
-margin_top = 297.0
-margin_right = 480.0
-margin_bottom = 311.0
+margin_top = 325.0
+margin_right = 450.0
+margin_bottom = 339.0
 text = "Add Posting"
 align = 1
 
 [node name="Unposted" type="VBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 319.0
-margin_right = 480.0
-margin_bottom = 319.0
+margin_top = 347.0
+margin_right = 450.0
+margin_bottom = 347.0
 script = ExtResource( 4 )
 
 [node name="BackToInn" type="Button" parent="."]

@@ -35,6 +35,25 @@ func set_slimes(value:int):
 func set_slime_density(value:float):
 	slime_density = clamp(slime_density, 0, 1.0)
 	
+func get_thing_count(thing:String)->int:
+	match (S.things[thing]):
+		S.things.ALE: return ale
+		S.things.COINS: return coins
+		S.things.POTIONS: return potions
+		S.things.REST: return hp
+		_: 
+			push_error("Thing not found! " + thing)
+			return -1
+
+func change_thing_count(thing:String, amount:int):
+	match (S.things[thing]):
+		S.things.ALE: ale += amount
+		S.things.COINS: coins += amount
+		S.things.POTIONS: potions += amount
+		S.things.REST: hp += amount
+		_: 
+			push_error("Thing not found! " + thing)
+	
 	
 class DATE:
 	var season:int

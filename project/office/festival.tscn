@@ -1,15 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://textures/arrow.png" type="Texture" id=1]
 [ext_resource path="res://textures/event gladiator.png" type="Texture" id=2]
 [ext_resource path="res://resources/tinierBold.tres" type="DynamicFont" id=3]
 [ext_resource path="res://office/festival.gd" type="Script" id=4]
+[ext_resource path="res://resources/new_game.tres" type="Resource" id=5]
 [ext_resource path="res://resources/label_theme.tres" type="Theme" id=6]
 
 [node name="festival" type="VBoxContainer"]
 margin_right = 480.0
 margin_bottom = 151.0
 script = ExtResource( 4 )
+save_game_override = ExtResource( 5 )
+title = "Gladiator Games"
+icon = ExtResource( 2 )
+season = "Summer"
+day = "15"
+description = "Fight Fight Fight"
+supplies = [ 0, 1 ]
 
 [node name="OfficeAction" type="Button" parent="."]
 margin_right = 188.0
@@ -58,14 +66,20 @@ margin_top = 79.0
 margin_right = 480.0
 margin_bottom = 113.0
 
+[node name="Reset" type="Button" parent="Dialog_VBox/Options"]
+margin_right = 116.0
+margin_bottom = 34.0
+text = "Remove All"
+
 [node name="TakeDown" type="Button" parent="Dialog_VBox/Options"]
-margin_right = 117.0
+margin_left = 120.0
+margin_right = 237.0
 margin_bottom = 34.0
 text = "Add 10 Ale"
 
 [node name="Post" type="Button" parent="Dialog_VBox/Options"]
-margin_left = 121.0
-margin_right = 274.0
+margin_left = 241.0
+margin_right = 394.0
 margin_bottom = 34.0
 text = "Add 10 Potions"
 
