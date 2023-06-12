@@ -12,4 +12,5 @@ hp = 0
 patrons = 3
 turns = 0
 brewers = 1
+slime_density = 1.0
 active_posts = [  ]

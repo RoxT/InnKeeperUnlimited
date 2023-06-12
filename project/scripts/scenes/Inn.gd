@@ -45,7 +45,6 @@ func _enter_tree():
 #	pass
 
 func pass_time():
-	game.turns += 1
 	var ale_drank = 0
 	var potions_bought = 0
 	var slimes_brought = 0
@@ -126,7 +125,7 @@ func pass_time():
 		
 	update_stock()
 	
-	print("average ale: " + str(round(total_ale/game.turns)) + " potions: " + str(round(total_potions/game.turns)) + " slimes: " + str(round(total_slimes/game.turns)) + " patrons_delta: " + str(patrons_delta) + " popularity: " + str(direction))
+	print("average ale: " + str(round(total_ale/game.turns+1)) + " potions: " + str(round(total_potions/game.turns+1)) + " slimes: " + str(round(total_slimes/game.turns+1)) + " patrons_delta: " + str(patrons_delta) + " popularity: " + str(direction))
 	
 	emit_signal("time_passed")
 	

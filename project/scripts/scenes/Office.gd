@@ -30,9 +30,11 @@ func _ready() -> void:
 	var err = hire_action.connect("buy_action", self, "_on_buy_action")
 	if err != OK:push_error("Error connecting signal: " + str(err))
 	hire_action.game = game
+	#TODO refresh
 
 func _enter_tree() -> void:
 	if loaded: init()
+	#TODO refresh
 	
 func _on_BackToInn_pressed() -> void:
 	emit_signal("back_to_inn")

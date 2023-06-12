@@ -22,7 +22,10 @@ static func new_game():
 	return load("res://resources/new_game.tres").duplicate()
 
 func set_turns(value:int):
-	turns = value
+	push_error("Use pass time to change turns")
+
+func pass_time():
+	turns += 1
 	var err := ResourceSaver.save(PATH, self)
 	if err != OK:
 		push_error("Error saving to : " + PATH + " error code: " +str(err))

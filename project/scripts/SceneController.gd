@@ -60,7 +60,7 @@ func _on_time_passed():
 	if S.ale_penalty > 0: S.ale_penalty -= 1
 	office.pass_time()
 	
-	var date := save_game.DATE.new(save_game.turns)
+	var date := save_game.DATE.new(save_game.turns+1)
 	if date.day == 1:
 		season.get_node("Panel").theme_type_variation = date.get_season_label()
 		season.get_node("Label").text = tr(date.get_season_label())
@@ -70,6 +70,7 @@ func _on_time_passed():
 			if date.day == f.day:
 				#show festival proceeds
 				pass
+	save_game.pass_time()
 	
 func on_no_ale():
 	S.ale_penalty = 10
