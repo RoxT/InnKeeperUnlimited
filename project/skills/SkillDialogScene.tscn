@@ -32,7 +32,7 @@ margin_bottom = 705.0
 
 [node name="RichTextLabelTiny" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 margin_right = 450.0
-margin_bottom = 659.0
+margin_bottom = 652.0
 size_flags_vertical = 3
 custom_fonts/italics_font = ExtResource( 1 )
 custom_fonts/bold_font = ExtResource( 3 )
@@ -40,7 +40,7 @@ custom_fonts/normal_font = ExtResource( 2 )
 text = "The ale flows"
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 663.0
+margin_top = 656.0
 margin_right = 450.0
 margin_bottom = 690.0
 text = "Back"

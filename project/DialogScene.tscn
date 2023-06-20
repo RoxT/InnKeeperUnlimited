@@ -24,7 +24,7 @@ margin_bottom = 705.0
 
 [node name="RichTextLabelTiny" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 margin_right = 450.0
-margin_bottom = 656.0
+margin_bottom = 652.0
 size_flags_vertical = 3
 custom_fonts/italics_font = ExtResource( 1 )
 custom_fonts/bold_font = ExtResource( 3 )
@@ -34,11 +34,11 @@ bbcode_text = "HEllo I'm tiny
 [b]Hello I'm TinierBold[/b]
 [i]Hello I'm Tinier[/i]"
 text = "HEllo I'm tiny
-[b]Hello I'm TinierBold[/b]
-[i]Hello I'm Tinier[/i]"
+Hello I'm TinierBold
+Hello I'm Tinier"
 
 [node name="Next" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 660.0
+margin_top = 656.0
 margin_right = 450.0
 margin_bottom = 690.0
 rect_min_size = Vector2( 0, 30 )

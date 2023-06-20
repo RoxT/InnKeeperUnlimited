@@ -23,15 +23,15 @@ margin_right = 450.0
 margin_bottom = 31.0
 
 [node name="TitleLabel" type="Label" parent="VBox/HBox"]
-margin_right = 28.0
+margin_right = 39.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 0, 31 )
 text = "Rest"
 valign = 1
 
 [node name="TextureProgress" type="TextureProgress" parent="VBox/HBox"]
-margin_left = 32.0
-margin_right = 332.0
+margin_left = 43.0
+margin_right = 343.0
 margin_bottom = 31.0
 theme = ExtResource( 3 )
 max_value = 5.0
@@ -61,5 +61,5 @@ text = "Each batch has 3 hp"
 [node name="LevelUpBtn" type="Button" parent="VBox"]
 margin_top = 53.0
 margin_right = 450.0
-margin_bottom = 80.0
+margin_bottom = 87.0
 text = "Level up Rest"

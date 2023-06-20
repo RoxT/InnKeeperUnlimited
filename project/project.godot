@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "FestivalR",
+"language": "GDScript",
+"path": "res://scripts/FestivalR.gd"
+}, {
+"base": "Resource",
 "class": "SaveGame",
 "language": "GDScript",
 "path": "res://scripts/SaveGameR.gd"
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://skills/RSkillSet.gd"
 } ]
 _global_script_class_icons={
+"FestivalR": "",
 "SaveGame": "",
 "Skill": "",
 "SkillSet": ""

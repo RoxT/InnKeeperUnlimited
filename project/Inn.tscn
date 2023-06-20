@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/SceneController.gd" type="Script" id=1]
 [ext_resource path="res://scripts/scenes/Inn.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://textures/fourxfour.png" type="Texture" id=11]
 [ext_resource path="res://resources/header.tres" type="Theme" id=12]
 [ext_resource path="res://textures/seasons/seasons.tres" type="Theme" id=13]
+[ext_resource path="res://textures/event gladiator.png" type="Texture" id=14]
 
 [sub_resource type="AnimatedTexture" id=1]
 flags = 4
@@ -60,6 +61,20 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../Inn")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_stock"
+} ]
 }
 
 [node name="SceneController" type="Node"]
@@ -258,6 +273,10 @@ margin_right = 130.0
 margin_bottom = 18.0
 text = "10th of Summer"
 
+[node name="FestivalSprite" type="Sprite" parent="Inn/Date"]
+position = Vector2( -20, 4 )
+texture = ExtResource( 14 )
+
 [node name="Sprite" type="Sprite" parent="Inn/Date"]
 position = Vector2( -4, 2 )
 texture = ExtResource( 11 )
@@ -270,11 +289,13 @@ layer = 100
 visible = false
 
 [node name="Panel" type="Panel" parent="Season"]
+modulate = Color( 0, 0, 0, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="Season"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 202.0
 margin_top = 75.0
 margin_right = 284.0
@@ -285,9 +306,36 @@ text = "Summer"
 [node name="SeasonPlayer" type="AnimationPlayer" parent="Season"]
 anims/wipe = SubResource( 2 )
 
+[node name="Proceeds" type="CanvasLayer" parent="."]
+layer = 100
+visible = false
+
+[node name="Panel" type="Panel" parent="Proceeds"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Margin" type="MarginContainer" parent="Proceeds/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Proceeds/Panel/Margin"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 465.0
+margin_bottom = 705.0
+text = "Proceeds"
+
+[node name="BackToInn" type="Button" parent="Proceeds/Panel"]
+margin_left = 11.0
+margin_top = 664.0
+margin_right = 134.0
+margin_bottom = 698.0
+text = "Back to Inn"
+
 [connection signal="pressed" from="Inn/buttons/ale" to="Inn" method="_on_ale_pressed"]
 [connection signal="pressed" from="Inn/buttons/potion" to="Inn" method="_on_potion_pressed"]
 [connection signal="pressed" from="Inn/buttons/rest" to="Inn" method="_on_rest_pressed"]
 [connection signal="pressed" from="Inn/buttons/SkillsBtn" to="." method="_on_SkillsBtn_pressed"]
 [connection signal="pressed" from="Inn/buttons/OfficeBtn" to="." method="_on_OfficeBtn_pressed"]
 [connection signal="pressed" from="Inn/DialogBtn" to="." method="_on_DialogBtn_pressed"]
+[connection signal="button_down" from="Proceeds/Panel/BackToInn" to="." method="_on_Proceeds_BackToInn_button_down"]

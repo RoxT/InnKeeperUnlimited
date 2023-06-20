@@ -123,9 +123,9 @@ func pass_time():
 		game.hp -= 1
 		$stock/hp.text = "HP: " + str(game.hp)
 		
-	update_stock()
+
 	
-	print("average ale: " + str(round(total_ale/game.turns+1)) + " potions: " + str(round(total_potions/game.turns+1)) + " slimes: " + str(round(total_slimes/game.turns+1)) + " patrons_delta: " + str(patrons_delta) + " popularity: " + str(direction))
+	#print("average ale: " + str(round(total_ale/game.turns+1)) + " potions: " + str(round(total_potions/game.turns+1)) + " slimes: " + str(round(total_slimes/game.turns+1)) + " patrons_delta: " + str(patrons_delta) + " popularity: " + str(direction))
 	
 	emit_signal("time_passed")
 	
@@ -136,6 +136,13 @@ func update_stock():
 	$stock/ale.text = "Ale: " + str(game.ale)
 	var date := game.DATE.new(game.turns)
 	$Date.text = date.get_date_string()
+	var festival = game.get_todays_festival()
+	if festival:
+		$Date/FestivalSprite.texture = load(festival.icon)
+		$Date/FestivalSprite.show()
+	else:
+		$Date/FestivalSprite.hide()
+		
 	$Date/Sprite.frame = date.season
 
 func adjust_children(amt:int, node: Position2D, tex:Texture):

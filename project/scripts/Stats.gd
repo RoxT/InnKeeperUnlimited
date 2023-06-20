@@ -16,6 +16,9 @@ enum things {
 	COINS
 }
 
+func thing(index:int)->String:
+	return things.keys()[index]
+
 enum actions {
 	BREWER
 }
@@ -57,6 +60,13 @@ class Batch:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+	
+enum festivals {
+	GLADIATOR,
+	HARVEST
+}
+	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -7,8 +7,8 @@ RANDOM2,So and so is getting married
 RANDOM3,So and so is becoming an adventurer
 SLIMES_WANTED,Local tavern is paying for slimes
 ESCORTS_WANTED,Local tavern offering to escort travellers
-SPRING,Spring
-SUMMER,Summer
-FALL,Fall
-WINTER,Winter
 FESTIVAL_HELP_NOTES,All supplies set aside will be sold on the date of the festival
+SEASONS0,Spring
+SEASONS1,Summer
+SEASONS2,Fall
+SEASONS3,Winter

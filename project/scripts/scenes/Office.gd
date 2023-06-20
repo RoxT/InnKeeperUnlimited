@@ -22,8 +22,7 @@ signal back_to_inn
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if get_parent().name == "root":
-		game = save_game_override if save_game_override else SaveGame.new_game()
+
 	assert(game)
 	init()
 	loaded = true
@@ -34,10 +33,16 @@ func _ready() -> void:
 
 func _enter_tree() -> void:
 	if loaded: init()
+	elif get_parent().name == "root":
+		game = save_game_override if save_game_override else SaveGame.new_game()
 	#TODO refresh
+	$MarginContainer/HBox/Festivals.game = game
 	
 func _on_BackToInn_pressed() -> void:
 	emit_signal("back_to_inn")
+	
+func get_festivals()->Dictionary:
+	return $MarginContainer/HBox/Festivals.festivals
 
 func init():
 	road_score.text = str(S.road_quality)
@@ -63,6 +68,7 @@ func init():
 			var l := Label.new()
 			l.text = tr(g)
 			gossip_label.add_child(l)
+	
 
 func _on_post_action(is_active:bool, post_const:String):
 	add_gossip(post_const, is_active)

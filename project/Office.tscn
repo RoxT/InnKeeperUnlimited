@@ -18,6 +18,7 @@ turns = 1
 brewers = 1
 slime_density = 1.0
 active_posts = [ 1 ]
+festivals_this_month = [  ]
 
 [node name="Office" type="Node2D"]
 script = ExtResource( 1 )
@@ -86,46 +87,47 @@ size_flags_horizontal = 3
 text = "0/50"
 align = 2
 
-[node name="Festivals" type="VBoxContainer" parent="MarginContainer/HBox"]
+[node name="FestivalsLabel" type="Label" parent="MarginContainer/HBox"]
 margin_top = 251.0
 margin_right = 450.0
 margin_bottom = 265.0
-script = ExtResource( 5 )
-
-[node name="Label" type="Label" parent="MarginContainer/HBox/Festivals"]
-margin_right = 450.0
-margin_bottom = 14.0
 text = "Upcoming Festivals"
 
-[node name="BuffsLabel" type="Label" parent="MarginContainer/HBox"]
+[node name="Festivals" type="VBoxContainer" parent="MarginContainer/HBox"]
 margin_top = 273.0
 margin_right = 450.0
-margin_bottom = 287.0
+margin_bottom = 273.0
+script = ExtResource( 5 )
+
+[node name="BuffsLabel" type="Label" parent="MarginContainer/HBox"]
+margin_top = 281.0
+margin_right = 450.0
+margin_bottom = 295.0
 
 [node name="TitleB" type="Label" parent="MarginContainer/HBox"]
-margin_top = 295.0
+margin_top = 303.0
 margin_right = 450.0
-margin_bottom = 309.0
+margin_bottom = 317.0
 text = "Billboard Posts"
 align = 1
 
 [node name="Posted" type="VBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 317.0
+margin_top = 325.0
 margin_right = 450.0
-margin_bottom = 317.0
+margin_bottom = 325.0
 script = ExtResource( 4 )
 
 [node name="TitleP" type="Label" parent="MarginContainer/HBox"]
-margin_top = 325.0
+margin_top = 333.0
 margin_right = 450.0
-margin_bottom = 339.0
+margin_bottom = 347.0
 text = "Add Posting"
 align = 1
 
 [node name="Unposted" type="VBoxContainer" parent="MarginContainer/HBox"]
-margin_top = 347.0
+margin_top = 355.0
 margin_right = 450.0
-margin_bottom = 347.0
+margin_bottom = 355.0
 script = ExtResource( 4 )
 
 [node name="BackToInn" type="Button" parent="."]

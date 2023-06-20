@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/FestivalR.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 1
+supplies = [ 1, 0 ]
+amounts_saved = {
+0: 20,
+2: 30
+}
+day = 0
