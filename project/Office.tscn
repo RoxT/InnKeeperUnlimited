@@ -92,6 +92,7 @@ margin_top = 251.0
 margin_right = 450.0
 margin_bottom = 265.0
 text = "Upcoming Festivals"
+align = 1
 
 [node name="Festivals" type="VBoxContainer" parent="MarginContainer/HBox"]
 margin_top = 273.0
@@ -131,10 +132,10 @@ margin_bottom = 355.0
 script = ExtResource( 4 )
 
 [node name="BackToInn" type="Button" parent="."]
-margin_left = 364.0
-margin_top = 668.0
-margin_right = 465.0
-margin_bottom = 707.0
+margin_left = 344.0
+margin_top = 670.0
+margin_right = 467.0
+margin_bottom = 709.0
 text = "Back to Inn"
 
 [connection signal="pressed" from="BackToInn" to="." method="_on_BackToInn_pressed"]

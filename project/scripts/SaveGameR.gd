@@ -64,13 +64,17 @@ func store_festival_supplies(festival_id:int, supply:String, amount:int):
 			break
 	assert(found, str(festival_id) + " not found after " + get_date().get_date_string())
 	change_thing_count(supply, -amount)
+
+func remove_festival(f:FestivalR):
+	festivals_this_month.erase(f)
 	
+
 func reset_festival_supplies(festival_id:int):
 	for f in festivals_this_month:
 		if f.id == festival_id:
 			f = f as FestivalR
 			for s in f.supplies:
-				change_thing_count(s, f.amounts_saved[S.thing(s)])
+				change_thing_count(S.thing(s), f.amounts_saved[S.thing(s)])
 			f.reset()
 
 # supply:String : {amount:int}

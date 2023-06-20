@@ -37,6 +37,7 @@ func _ready() -> void:
 	reset = Button.new()
 	reset.text = "Remove All"
 	reset.connect("pressed", self, "on_reset_btn_pressed")
+	options.add_child(reset)
 	for supply in supplies:
 		var name_str:String = S.things.keys()[supply]
 		var btn := Button.new()
@@ -49,7 +50,11 @@ func _ready() -> void:
 	dialog.hide()
 		
 func refresh():
-	var shipped := day == game.get_date().day - 1
+	var today := game.get_date().day
+	if today >= day:
+		queue_free()
+		return
+	var shipped := day == today + 1
 	reset.disabled = shipped
 	for c in options.get_children():
 		if S.things.has(c.name):

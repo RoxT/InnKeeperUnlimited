@@ -3,7 +3,7 @@ extends VBoxContainer
 var Festival := preload("res://office/festival.tscn")
 var loaded := false
 var game:SaveGame
-var season
+var day
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,15 +17,26 @@ func _enter_tree() -> void:
 		
 func refresh():
 	var date := game.get_date()
-	if date.season != season:
+	var upcoming := false
+	if date.day != day:
 		for c in get_children():
 			c.queue_free()
 		for f in festivals[date.season]:
 			f = f as festival
-			var post := Festival.instance()
-			post.game = game
-			post.init(f, tr("SEASONS" + str(season)))
-			add_child(post)
+			if f.day > date.day:
+				upcoming = true
+				var post := Festival.instance()
+				post.game = game
+				post.init(f, tr("SEASONS" + str(date.season)))
+				add_child(post)
+		if !upcoming:
+			var none := Label.new()
+			none.text = "None"
+			add_child(none)
+	day = date.day
+	for c in get_children():
+		if c.has_method("refresh"):
+			c.refresh()
 		
 
 var festivals = {

@@ -87,13 +87,22 @@ func _on_time_passed():
 			label.add_text("Sold: ")
 			label.newline()
 			proceeds.hide()
+			var count := 0
 			for s in f.supplies:
 				var thing:String = S.things.keys()[s]
-				if f.amounts_saved[thing] > 0:
-					proceeds.show()
+				count += f.amounts_saved[thing]
 				label.add_text(thing + ": " + str(f.amounts_saved[thing]))
 				label.newline()
-		inn.update_stock()
+			if count > 0: 
+				var made := count * 2
+				label.newline()
+				label.add_text("Made " + str(made) + " coins")
+				save_game.coins += made
+				proceeds.show()
+			inn.update_stock()
+			save_game.remove_festival(f)
+		else: 
+			inn.update_stock()
 	save_game.save_game()
 	
 func on_no_ale():
